@@ -1,0 +1,33 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_bar"/>
+
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/drawerMenu"
+            android:name="com.example.toshiba.mylogin.fragment.FragDrawerMenu"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:layout="@layout/frag_drawer_menu"
+            tools:layout="@layout/frag_drawer_menu"/>
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>
