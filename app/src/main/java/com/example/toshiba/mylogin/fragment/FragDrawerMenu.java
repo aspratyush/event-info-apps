@@ -64,8 +64,8 @@ public class FragDrawerMenu extends Fragment {
     private void prepareMenu() {
         ArrayList<String> menus = new ArrayList<String>();
         menus.add("Donate");
+        menus.add("Notifications");
         menus.add("Contact Us");
-        menus.add("Recent Notification");
 
         list.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, menus));
     }
