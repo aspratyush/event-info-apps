@@ -1,5 +1,4 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,38 +7,53 @@
 
     >
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/app_bar"/>
-
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-        <LinearLayout
-            android:id="@+id/mainContent"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:layout_height="match_parent">
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tablayout"
+            <LinearLayout
+                android:id="@+id/mainContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <android.support.v4.view.ViewPager
-                android:id="@+id/pager"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <!-- <FrameLayout
-                 android:id="@+id/mainContent"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"/>-->
-        </LinearLayout>
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/app_bar" />
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+            </LinearLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btnFloating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@android:drawable/arrow_up_float"
+                />
+
+        </RelativeLayout>
 
         <fragment
             android:id="@+id/drawerMenu"
@@ -48,7 +62,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:layout="@layout/frag_drawer_menu"
-            tools:layout="@layout/frag_drawer_menu"/>
+            tools:layout="@layout/frag_drawer_menu" />
 
 
     </android.support.v4.widget.DrawerLayout>
