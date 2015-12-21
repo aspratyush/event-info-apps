@@ -50,7 +50,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@android:drawable/arrow_up_float"
+                android:src="@drawable/up"
+                app:borderWidth="0dp"
+                app:backgroundTint="#f00"
                 />
 
         </RelativeLayout>

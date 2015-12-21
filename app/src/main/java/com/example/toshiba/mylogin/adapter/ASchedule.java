@@ -1,6 +1,7 @@
 package com.example.toshiba.mylogin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.toshiba.mylogin.R;
+import com.example.toshiba.mylogin.activity.ScheduleActivity;
 import com.example.toshiba.mylogin.model.MSchedule;
 
 
@@ -70,6 +72,8 @@ public class ASchedule extends RecyclerView.Adapter<ASchedule.MyViewHolder> {
                 @Override
                 public void onClick(View v) {
                     MSchedule schedule= list.get(getAdapterPosition());
+                    ScheduleActivity.date=schedule.getDay();
+                    context.startActivity(new Intent(context, ScheduleActivity.class));
 
 
                 }
