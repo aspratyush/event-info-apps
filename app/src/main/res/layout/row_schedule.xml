@@ -2,23 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/dp100"
     android:layout_height="@dimen/dp100"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="#CCC"
     android:layout_margin="10dp"
-    >
+    android:background="#fce4ec"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date" />
+        android:text="Date"
+        android:textColor="#880e4f" />
 
     <TextView
         android:id="@+id/tvDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Day" />
+        android:text="Day"
+        android:textColor="#880e4f" />
 
 </LinearLayout>

@@ -12,7 +12,7 @@
         android:id="@+id/drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="false">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,6 +31,7 @@
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tablayout"
                     android:layout_width="match_parent"
+                    android:background="#CCC"
                     android:layout_height="wrap_content" />
 
                 <android.support.v4.view.ViewPager

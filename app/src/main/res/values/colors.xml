@@ -2,4 +2,11 @@
 <resources>
     <color name="gray">#CCC</color>
     <color name="blue">#00f</color>
+    <color name="primary">#AD1457</color>
+    <color name="primary_dark">#880E4F</color>
+    <color name="accent">#00f</color>
+    <color name="textColorPrimary">#ffffff</color>
+    <color name="textColorSecondary">#000</color>
+
+
 </resources>

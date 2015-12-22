@@ -41,7 +41,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
     }
 
     private void prepareDis() {
-        ArrayList<MGallery>galleries=new ArrayList<>();
+        ArrayList<MGallery>galleries=new ArrayList<MGallery>();
         galleries.add(new MGallery());
         galleries.add(new MGallery());
         galleries.add(new MGallery());
