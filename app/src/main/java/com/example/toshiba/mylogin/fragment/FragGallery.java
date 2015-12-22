@@ -45,24 +45,14 @@ public class FragGallery extends Fragment {
     private void prepareList(){
         galleries =new ArrayList<MGallery>();
         MGallery gallery=new MGallery();
-        gallery.setName("Shared by others");
+        gallery.setName("Shared by Others");
         galleries.add(gallery);
 
         gallery=new MGallery();
-        gallery.setName("Shared by others");
+        gallery.setName("Shared by You");
         galleries.add(gallery);
 
-        gallery=new MGallery();
-        gallery.setName("Shared by anyname");
-        galleries.add(gallery);
 
-        gallery=new MGallery();
-        gallery.setName("Shared by others");
-        galleries.add(gallery);
-
-        gallery=new MGallery();
-        gallery.setName("Shared by others");
-        galleries.add(gallery);
 
 
         adapter=new AGallery(getActivity());

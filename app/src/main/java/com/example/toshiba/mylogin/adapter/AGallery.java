@@ -1,13 +1,19 @@
 package com.example.toshiba.mylogin.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.toshiba.mylogin.R;
+import com.example.toshiba.mylogin.activity.PhotoGalleryActivity;
 import com.example.toshiba.mylogin.model.MGallery;
 
 import java.util.ArrayList;
@@ -21,6 +27,7 @@ public class AGallery extends RecyclerView.Adapter<AGallery.MyViewHolder> {
     private Context context;
     private LayoutInflater inflater;
 
+    private Dialog dialog;
     public AGallery(Context context) {
         this.context = context;
         inflater=LayoutInflater.from(context);
@@ -68,9 +75,24 @@ public class AGallery extends RecyclerView.Adapter<AGallery.MyViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
-
+                    dialog=new Dialog(context);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.dialog_gallery);
+                    dialog.show();
+                    TextView tvPhotos=(TextView)dialog.findViewById(R.id.tvPhotos);
+                    TextView tvVideos=(TextView)dialog.findViewById(R.id.tvVideo);
+                    tvPhotos.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            context.startActivity(new Intent(context, PhotoGalleryActivity.class));
+                        }
+                    });
+                    tvVideos.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            context.startActivity(new Intent(context, PhotoGalleryActivity.class));
+                        }
+                    });
                 }
             });
 
