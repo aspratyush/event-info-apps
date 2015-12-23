@@ -2,15 +2,18 @@ package com.example.toshiba.mylogin.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private MyAdapter adapter;
     private FloatingActionButton btnFloating;
+    private NavigationView navigationView;
 
 
 
@@ -46,7 +50,16 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager();
         setupTabLayout();
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId()){
+            case android.R.id.home:
+                drawer.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -54,18 +67,26 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.pager);
         btnFloating=(FloatingActionButton)findViewById(R.id.btnFloating);
+        navigationView=(NavigationView)findViewById(R.id.navigationView);
 
         setSupportActionBar(toolbar);
-        FragDrawerMenu fragDrawerMenu = (FragDrawerMenu) getSupportFragmentManager().findFragmentById(R.id.drawerMenu);
-        fragDrawerMenu.setUp(drawer, toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu);
 
         btnFloating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Upload testing",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Upload testing", Toast.LENGTH_SHORT).show();
             }
         });
-
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                menuItem.setChecked(true);
+                drawer.closeDrawers();
+                Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
 
     }
 
