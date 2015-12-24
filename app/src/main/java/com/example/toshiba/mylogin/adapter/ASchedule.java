@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.toshiba.mylogin.R;
@@ -47,8 +48,8 @@ public class ASchedule extends RecyclerView.Adapter<ASchedule.MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MSchedule schedule = list.get(position);
-        holder.date.setText(schedule.getDate());
-        holder.day.setText(schedule.getDay());
+        holder.date.setText(schedule.getDate()+" "+schedule.getDay());
+        //holder.day.setText(schedule.getDay());
 
     }
 
@@ -59,14 +60,16 @@ public class ASchedule extends RecyclerView.Adapter<ASchedule.MyViewHolder> {
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView date,day;
+        public TextView date;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             date = (TextView) itemView.findViewById(R.id.tvDate);
-            day = (TextView) itemView.findViewById(R.id.tvDay);
+           // day = (TextView) itemView.findViewById(R.id.tvDay);
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

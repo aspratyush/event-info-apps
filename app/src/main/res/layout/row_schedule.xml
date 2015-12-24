@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/dp100"
-    android:layout_height="@dimen/dp100"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="#fce4ec"
     android:gravity="center"
@@ -9,17 +9,15 @@
 
     <TextView
         android:id="@+id/tvDate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date"
+        android:text="Date : 12/12/2015"
         android:textColor="#880e4f" />
 
-    <TextView
-        android:id="@+id/tvDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Day"
-        android:textColor="#880e4f" />
-
+    <ImageView
+        android:scaleType="fitXY"
+        android:src="@drawable/simple"
+        android:id="@+id/imgSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 </LinearLayout>

@@ -32,15 +32,15 @@ public class FragGallery extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_schedule, container, false);
-        recyclerView=(RecyclerView)view.findViewById(R.id.recyclerView);
+        view = inflater.inflate(R.layout.lay_gallery, container, false);
+        //recyclerView=(RecyclerView)view.findViewById(R.id.recyclerView);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        prepareList();
+        //prepareList();
     }
     private void prepareList(){
         galleries =new ArrayList<MGallery>();

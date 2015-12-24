@@ -32,7 +32,9 @@
                     android:id="@+id/tablayout"
                     android:layout_width="match_parent"
                     android:background="#CCC"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:tabSelectedTextColor="@color/blue"
+                    />
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/pager"
@@ -53,7 +55,7 @@
                 android:layout_marginRight="10dp"
                 android:src="@drawable/up"
                 app:borderWidth="0dp"
-                app:backgroundTint="#f00"
+                app:backgroundTint="@color/primary"
                 />
 
         </RelativeLayout>
@@ -63,7 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="@color/primary"
+            android:background="#ffffff"
+            app:itemTextColor="#009688"
             app:headerLayout="@layout/drawer_header"
             app:menu="@menu/drawer"/>
 

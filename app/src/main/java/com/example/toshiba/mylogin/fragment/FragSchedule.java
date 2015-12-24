@@ -31,7 +31,7 @@ public class FragSchedule extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_schedule, container, false);
+        view = inflater.inflate(R.layout.lay_recycler, container, false);
         recyclerView=(RecyclerView)view.findViewById(R.id.recyclerView);
         return view;
     }
@@ -76,7 +76,7 @@ public class FragSchedule extends Fragment {
         adapter=new ASchedule(getActivity());
 
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
 
         adapter.setData(schedules);
 

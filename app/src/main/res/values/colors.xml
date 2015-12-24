@@ -8,5 +8,13 @@
     <color name="textColorPrimary">#ffffff</color>
     <color name="textColorSecondary">#000</color>
 
+    <color name="status_bar">#ad1457</color>
+    <color name="app_bar">#880e4f</color>
+    <color name="app_name">#ffffff</color>
+    <color name="tab">#14237e</color>
+    <color name="scroll_bar">#14237e</color>
+    <color name="schedule_date">#880e4f</color>
+
+
 
 </resources>
