@@ -12,8 +12,17 @@ import android.view.ViewGroup;
 import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.adapter.ASchedule;
 import com.example.toshiba.mylogin.model.MSchedule;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
 
 
 public class FragSchedule extends Fragment {
@@ -39,46 +48,57 @@ public class FragSchedule extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getOnlineData();
         prepareList();
+
+    }
+    private void getOnlineData(){
+        AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        params.add("key", "value");
+        client.post("http://step2code.com/pratyush/api/schedule_list", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
+                jsonParser(response);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+            }
+        });
+    }
+    private void jsonParser(JSONArray jsonArray){
+        schedules=new ArrayList<MSchedule>();
+        MSchedule schedule;
+        for(int i=0;i<jsonArray.length();i++){
+            try {
+                JSONObject jObj=jsonArray.getJSONObject(i);
+                String date=jObj.getString("date");
+                String img=jObj.getString("img");
+                String venue=jObj.getString("venue");
+                schedule=new MSchedule();
+                schedule.setDate(date);
+                schedule.setImage(img);
+                schedule.setVenue(venue);
+                schedules.add(schedule);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        adapter.setData(schedules);
     }
     private void prepareList(){
-        schedules=new ArrayList<MSchedule>();
-        MSchedule schedule=new MSchedule();
-        schedule.setDate("20 Dec");
-        schedule.setDay("Sunday");
-        schedules.add(schedule);
 
-        schedule=new MSchedule();
-        schedule.setDate("21 Dec");
-        schedule.setDay("Monday");
-        schedules.add(schedule);
-
-        schedule=new MSchedule();
-        schedule.setDate("22 Dec");
-        schedule.setDay("Tuesday");
-        schedules.add(schedule);
-
-        schedule=new MSchedule();
-        schedule.setDate("23 Dec");
-        schedule.setDay("Wednesday");
-        schedules.add(schedule);
-
-        schedule=new MSchedule();
-        schedule.setDate("24 Dec");
-        schedule.setDay("Thursday");
-        schedules.add(schedule);
-
-        schedule=new MSchedule();
-        schedule.setDate("25 Dec");
-        schedule.setDay("Friday");
-        schedules.add(schedule);
 
         adapter=new ASchedule(getActivity());
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
 
-        adapter.setData(schedules);
+
 
     }
 }

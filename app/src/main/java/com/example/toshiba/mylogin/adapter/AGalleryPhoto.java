@@ -1,6 +1,7 @@
 package com.example.toshiba.mylogin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.toshiba.mylogin.R;
+import com.example.toshiba.mylogin.activity.SimpleActivity;
 import com.example.toshiba.mylogin.model.MGallery;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -45,7 +48,10 @@ public class AGalleryPhoto extends RecyclerView.Adapter<AGalleryPhoto.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MGallery schedule = galleries.get(position);
-        holder.imgPhoto.setBackgroundResource(R.drawable.simple);
+        Picasso.with(context)
+                .load(schedule.getSrc())
+                .placeholder(R.drawable.simple)
+                .into(holder.imgPhoto);
 
 
     }
@@ -64,6 +70,14 @@ public class AGalleryPhoto extends RecyclerView.Adapter<AGalleryPhoto.MyViewHold
             super(itemView);
 
             imgPhoto = (ImageView) itemView.findViewById(R.id.imgPhoto);
+            imgPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MGallery gallery=galleries.get(getAdapterPosition());
+                    SimpleActivity.gallery=gallery;
+                    context.startActivity(new Intent(context, SimpleActivity.class));
+                }
+            });
 
 
         }

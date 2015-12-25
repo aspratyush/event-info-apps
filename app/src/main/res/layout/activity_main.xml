@@ -1,6 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -31,10 +30,9 @@
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tablayout"
                     android:layout_width="match_parent"
-                    android:background="#CCC"
                     android:layout_height="wrap_content"
-                    app:tabSelectedTextColor="@color/blue"
-                    />
+                    android:background="#CCC"
+                    app:tabSelectedTextColor="@color/blue" />
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/pager"
@@ -54,9 +52,8 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/up"
-                app:borderWidth="0dp"
                 app:backgroundTint="@color/primary"
-                />
+                app:borderWidth="0dp" />
 
         </RelativeLayout>
 
@@ -66,9 +63,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="#ffffff"
-            app:itemTextColor="#009688"
             app:headerLayout="@layout/drawer_header"
-            app:menu="@menu/drawer"/>
+            app:itemTextColor="#000000"
+            app:menu="@menu/drawer" />
 
 
     </android.support.v4.widget.DrawerLayout>

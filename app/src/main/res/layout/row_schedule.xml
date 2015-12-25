@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="#fce4ec"
+    android:background="#ffffff"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Date : 12/12/2015"
-        android:textColor="#880e4f" />
+        android:textColor="#88034f" />
 
     <ImageView
         android:scaleType="fitXY"

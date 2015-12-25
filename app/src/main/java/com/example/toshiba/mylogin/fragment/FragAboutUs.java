@@ -1,5 +1,6 @@
 package com.example.toshiba.mylogin.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -7,28 +8,36 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.toshiba.mylogin.R;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.example.toshiba.mylogin.activity.WebActivity;
+import com.example.toshiba.mylogin.model.MSchedule;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Picasso;
 
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by Jewel on 12/20/2015.
  */
-public class FragAboutUs extends Fragment {
+public class FragAboutUs extends Fragment implements View.OnClickListener {
 
 
-    private TextView tvAboutUs, tvAboutFamily;
+    private ImageView imgUs,imgFamily;
     private View view = null;
-    private Handler handler;
+
 
     public static FragAboutUs getInstance() {
         FragAboutUs fragAboutUs = new FragAboutUs();
@@ -39,66 +48,64 @@ public class FragAboutUs extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_about_us, container, false);
-        tvAboutUs = (TextView) view.findViewById(R.id.tvAboutUs);
-        tvAboutFamily = (TextView) view.findViewById(R.id.tvAboutFamily);
+        imgUs=(ImageView)view.findViewById(R.id.imgUs);
+        imgFamily=(ImageView)view.findViewById(R.id.imgFamily);
+        imgUs.setOnClickListener(this);
+        imgFamily.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        if (handler == null)
-            handler = new Handler();
-        callOnline();
-
+        getOnlineData();
 
     }
-
-    private void callOnline() {
-        OkHttpClient client = new OkHttpClient();
-        /*RequestBody requestBody = new FormEncodingBuilder()
-                .add("key", "value")
-                .build();*/
-        Request request = new Request.Builder()
-                .url("http://step2code.com/pratyush/api/about")
-                        //.post(requestBody)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
+    private void getOnlineData(){
+        AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        params.add("key", "value");
+        client.post("http://step2code.com/pratyush/api/about", params, new JsonHttpResponseHandler() {
             @Override
-            public void onFailure(Request request, IOException e) {
-                Log.d("Jewel", e.toString());
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                jsonParser(response);
             }
 
             @Override
-            public void onResponse(Response response) throws IOException {
-                jsonParser(response.body().string());
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
             }
         });
-
-
     }
-
-    private void jsonParser(String json) {
-
+    private void jsonParser(JSONObject jObj){
         try {
-            JSONObject object = new JSONObject(json);
-            final String us = object.getString("us");
-            final String family = object.getString("family");
 
-            Log.d("Jewel", us + " : " + family);
-
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    tvAboutUs.setText(us);
-                    tvAboutFamily.setText(family);
-                }
-            });
-
+            Picasso.with(getActivity())
+                    .load(jObj.getString("img_us"))
+                    .placeholder(R.drawable.simple)
+                    .into(imgUs);
+            Picasso.with(getActivity())
+                    .load(jObj.getString("img_family"))
+                    .placeholder(R.drawable.simple)
+                    .into(imgFamily);
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.imgUs:
+                WebActivity.url="https://aspratyush.wordpress.com/";
+                getActivity().startActivity(new Intent(getActivity(), WebActivity.class));
+                break;
+            case R.id.imgFamily:
+                WebActivity.url="https://aspratyush.wordpress.com/";
+                getActivity().startActivity(new Intent(getActivity(), WebActivity.class));
+                break;
         }
     }
 }

@@ -5,7 +5,16 @@ package com.example.toshiba.mylogin.model;
  */
 public class MSchedule {
     private int id;
-    private String date,day;
+    private String date, image,venue;
+
+
+    public String getVenue() {
+        return venue;
+    }
+
+    public void setVenue(String venue) {
+        this.venue = venue;
+    }
 
     public int getId() {
         return id;
@@ -23,11 +32,11 @@ public class MSchedule {
         this.date = date;
     }
 
-    public String getDay() {
-        return day;
+    public String getImage() {
+        return image;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

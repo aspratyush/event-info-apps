@@ -3,15 +3,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/dmenu_donate"
-            android:icon="@drawable/simple"
+            android:icon="@drawable/donate"
             android:title="Donate" />
         <item
             android:id="@+id/dmenu_notification"
-            android:icon="@drawable/simple"
+            android:icon="@drawable/notification"
             android:title="Notification" />
         <item
             android:id="@+id/dmenu_contact"
-            android:icon="@drawable/simple"
+            android:icon="@drawable/contact_us"
             android:title="Contact Us" />
     </group>
 
