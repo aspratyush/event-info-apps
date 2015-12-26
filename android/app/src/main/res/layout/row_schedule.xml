@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:text="Date : 12/12/2015"
+        android:textColor="#88034f" />
+
+    <ImageView
+        android:scaleType="fitXY"
+        android:src="@drawable/simple"
+        android:id="@+id/imgSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+</LinearLayout>

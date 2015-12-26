@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Jewel\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.3\1262995965440e28ba5c4d480c9c9ab4ccce84cc\picasso-2.3.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1262995965440e28ba5c4d480c9c9ab4ccce84cc">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\app\build\intermediates\pre-dexed\release\picasso-2.3.3-7b762263134a1d23e73705168f2fcdcd8c3ab5a9.jar" />
+    </item>
+
+</items>
