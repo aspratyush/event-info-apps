@@ -84,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
 
                 drawer.closeDrawers();
-                Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
+                WebActivity.url="https://aspratyush.wordpress.com/";
+                startActivity(new Intent(MainActivity.this,WebActivity.class));
                 return true;
             }
         });
