@@ -1,7 +1,9 @@
 package com.example.toshiba.mylogin.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -52,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add("username", edtUser.getText().toString().trim());
-                params.add("password", edtPass.getText().toString().trim());
+               // params.add("password", edtPass.getText().toString().trim());
                 client.post("http://step2code.com/pratyush/api/login", params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -78,11 +80,17 @@ public class LoginActivity extends AppCompatActivity {
             try {
 
                 int status=jsonObject.getInt("status");
-                Globals.USER_TYPE=jsonObject.getInt("user_type");
-                Globals.USER_ID=jsonObject.getInt("user_id");
+                int user_type=jsonObject.getInt("user_type");
+                int user_id=jsonObject.getInt("user_id");
+                Globals.USER_TYPE=user_type;
+                Globals.USER_ID=user_id;
 
-                Log.d("Jewel",Globals.USER_ID+" id");
-                Log.d("Jewel",Globals.USER_TYPE+" type");
+                SharedPreferences sp=getSharedPreferences("pratyush", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sp.edit();
+                editor.putInt("user_id", user_id);
+                editor.putInt("user_type",user_type);
+                editor.commit();
+
                 if(status==1){
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     finish();

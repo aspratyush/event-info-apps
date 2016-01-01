@@ -1,5 +1,6 @@
 package com.example.toshiba.mylogin.activity;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,8 @@ public class WebActivity extends AppCompatActivity {
 
     private WebView webView;
     private Toolbar toolbar;
-    private ProgressBar progressBar;
+    //private ProgressBar progressBar;
+    ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +35,10 @@ public class WebActivity extends AppCompatActivity {
     }
 
     private void init() {
-       // LoadingDialog.getInstance(WebActivity.this).open();
+        dialog=ProgressDialog.show(this,"","Loading....");
         webView=(WebView)findViewById(R.id.webView);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        progressBar=(ProgressBar)findViewById(R.id.progressBar);
+       // progressBar=(ProgressBar)findViewById(R.id.progressBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,8 +82,8 @@ public class WebActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             super.onPageFinished(view, url);
 
-            progressBar.setVisibility(View.GONE);
-            //LoadingDialog.close();
+           // progressBar.setVisibility(View.GONE);
+            dialog.dismiss();
         }
     }
     // To handle "Back" key press event for WebView to go back to previous screen.

@@ -55,7 +55,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         adapter = new AGalleryPhoto(this);
 
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
