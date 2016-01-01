@@ -11,7 +11,7 @@ public class LoadingDialog {
     private static ProgressDialog dialog;
     private static LoadingDialog loadingDialog;
 
-    public static LoadingDialog getInstance(Context _context) {
+    public LoadingDialog getInstance(Context _context) {
         context = _context;
         if (loadingDialog == null)
             loadingDialog = new LoadingDialog();

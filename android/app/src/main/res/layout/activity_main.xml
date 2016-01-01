@@ -31,8 +31,9 @@
                     android:id="@+id/tablayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#CCC"
-                    app:tabSelectedTextColor="@color/blue" />
+                    android:background="@color/primary"
+                    app:tabSelectedTextColor="@color/blue"
+                    android:fillViewport="false" />
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/pager"

@@ -1,8 +1,10 @@
 package com.example.toshiba.mylogin.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.DialogPreference;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +40,7 @@ public class FragAboutUs extends Fragment implements View.OnClickListener {
 
     private ImageView imgUs,imgFamily;
     private View view = null;
+    private ProgressDialog dialog;
 
 
     public static FragAboutUs getInstance() {
@@ -63,7 +66,7 @@ public class FragAboutUs extends Fragment implements View.OnClickListener {
 
     }
     private void getOnlineData(){
-        LoadingDialog.getInstance(getActivity()).open();
+        dialog = ProgressDialog.show(getActivity(), "", "Loading...", true);
         AsyncHttpClient client=new AsyncHttpClient();
         RequestParams params=new RequestParams();
         params.add("key", "value");
@@ -72,13 +75,13 @@ public class FragAboutUs extends Fragment implements View.OnClickListener {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 jsonParser(response);
-                LoadingDialog.close();
+                dialog.dismiss();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                LoadingDialog.close();
+                dialog.dismiss();
             }
         });
     }

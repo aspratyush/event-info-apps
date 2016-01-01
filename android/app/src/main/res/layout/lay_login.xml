@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="username"
+        android:textColor="#000"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -19,11 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="password"
+        android:textColor="#000"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#00f"
         android:text="Login" />
 </LinearLayout>

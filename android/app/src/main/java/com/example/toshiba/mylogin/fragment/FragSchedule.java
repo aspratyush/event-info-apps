@@ -1,6 +1,7 @@
 package com.example.toshiba.mylogin.fragment;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -32,6 +33,7 @@ public class FragSchedule extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<MSchedule> schedules;
     private ASchedule adapter;
+    private ProgressDialog dialog;
 
     public static FragSchedule getInstance() {
         FragSchedule fragExam = new FragSchedule();
@@ -59,7 +61,7 @@ public class FragSchedule extends Fragment {
 
     private void getOnlineData() {
 
-        LoadingDialog.getInstance(getActivity()).open();
+        dialog = ProgressDialog.show(getActivity(), "", "Loading...", true);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add("key", "value");
@@ -68,13 +70,13 @@ public class FragSchedule extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
                 jsonParser(response);
-                LoadingDialog.close();
+                dialog.dismiss();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                LoadingDialog.close();
+                dialog.dismiss();
             }
         });
     }

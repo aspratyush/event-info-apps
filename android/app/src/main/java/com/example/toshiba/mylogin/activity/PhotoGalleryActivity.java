@@ -11,6 +11,7 @@ import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.adapter.AGalleryPhoto;
 import com.example.toshiba.mylogin.model.MGallery;
 import com.example.toshiba.mylogin.model.MSchedule;
+import com.example.toshiba.mylogin.utils.Globals;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -64,8 +65,8 @@ public class PhotoGalleryActivity extends AppCompatActivity {
     private void getOnlineData(){
         AsyncHttpClient client=new AsyncHttpClient();
         RequestParams params=new RequestParams();
-        params.add("key", "value");
-        client.post("http://step2code.com/pratyush/api/gallery/"+type, params, new JsonHttpResponseHandler() {
+        params.add("user_type", Globals.USER_TYPE+"");
+        client.post("http://step2code.com/pratyush/api/gallery", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
@@ -85,7 +86,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         for(int i=0;i<jsonArray.length();i++){
             try {
                 JSONObject jObj=jsonArray.getJSONObject(i);
-                String img=jObj.getString("img");
+                String img=jObj.getString("file_name");
 
 
                 gallery=new MGallery();

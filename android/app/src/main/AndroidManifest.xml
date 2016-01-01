@@ -12,7 +12,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,20 +21,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ScheduleActivity" >
+        <activity android:name=".activity.ScheduleActivity"
+            android:screenOrientation="portrait"
+            >
         </activity>
-        <activity android:name=".activity.PhotoGalleryActivity" >
+        <activity android:name=".activity.PhotoGalleryActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            >
+
         </activity>
         <activity
             android:name=".activity.SimpleActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_simple" >
         </activity>
         <activity
             android:name=".activity.WebActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_web" >
         </activity>
         <activity
             android:name=".activity.UploadActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_upload" >
         </activity>
     </application>

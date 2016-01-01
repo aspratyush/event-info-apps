@@ -3,9 +3,11 @@ package com.example.toshiba.mylogin.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.example.toshiba.mylogin.R;
@@ -49,7 +51,7 @@ public class AGalleryPhoto extends RecyclerView.Adapter<AGalleryPhoto.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MGallery schedule = galleries.get(position);
         Picasso.with(context)
-                .load(schedule.getSrc())
+                .load("http://step2code.com/pratyush/uploads/"+schedule.getSrc())
                 .placeholder(R.drawable.loading)
                 .into(holder.imgPhoto);
 
@@ -70,6 +72,13 @@ public class AGalleryPhoto extends RecyclerView.Adapter<AGalleryPhoto.MyViewHold
             super(itemView);
 
             imgPhoto = (ImageView) itemView.findViewById(R.id.imgPhoto);
+
+            WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+
+            ViewGroup.LayoutParams params=imgPhoto.getLayoutParams();
+            params.width=(display.getWidth()-40)/3;
+            params.height=(display.getWidth()-40)/3;
             imgPhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

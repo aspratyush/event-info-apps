@@ -9,8 +9,9 @@
 
     <ImageView
         android:id="@+id/imgPhoto"
-        android:layout_width="@dimen/dp100"
-        android:layout_height="@dimen/dp100"
-        android:src="@drawable/simple"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
 
 </LinearLayout>
