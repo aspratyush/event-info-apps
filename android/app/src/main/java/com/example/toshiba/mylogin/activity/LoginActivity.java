@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ProgressDialog dialog=ProgressDialog.show(LoginActivity.this,"","Waiting...");
+                final ProgressDialog dialog=ProgressDialog.show(LoginActivity.this,"","Login...");
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add("username", edtUser.getText().toString().trim());
