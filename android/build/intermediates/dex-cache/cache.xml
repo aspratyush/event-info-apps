@@ -2,6 +2,7 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
         jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -17,9 +18,27 @@
     </item>
     <item
         jar="C:\Users\Jewel\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.3\1262995965440e28ba5c4d480c9c9ab4ccce84cc\picasso-2.3.3.jar"
+=======
+        jar="C:\Users\nc\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.3.6\526a9f794eab830eae4f23a62c572878b3f491ab\httpclient-4.3.6.jar"
+>>>>>>> 98b8cd1e722828e8ccefcdad37841daba382762f
         jumboMode="false"
-        revision="22.0.1"
+        revision="23.0.1"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\httpclient-4.3.6-c435f52279d4714c0ef5faaa1f3d0bd72a84244a.jar" />
+    </item>
+    <item
+        jar="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="40e7757d9b06db670062ddb3cf5b30c129b2fd8c">
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-e593b708752ab7350da5cc7011e92fbeb18ae698.jar" />
+    </item>
+    <item
+        jar="C:\Users\nc\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.3\1262995965440e28ba5c4d480c9c9ab4ccce84cc\picasso-2.3.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
         sha1="1262995965440e28ba5c4d480c9c9ab4ccce84cc">
+<<<<<<< HEAD
         <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\picasso-2.3.3-7b762263134a1d23e73705168f2fcdcd8c3ab5a9.jar" />
     </item>
     <item
@@ -63,6 +82,51 @@
         revision="22.0.1"
         sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
         <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-3eea5b855f4d05ed54a744a1ea3a957cf46fee8b.jar" />
+=======
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\picasso-2.3.3-9861c45a4625fcd019ce1a12c57e5586f39dab64.jar" />
+    </item>
+    <item
+        jar="C:\Users\nc\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.9\386a4339ffe52d5d63e80f9bed8d2b1d1a418249\android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.9-8aa587730bfef57832cb283972701a1b93cb3cf6.jar" />
+    </item>
+    <item
+        jar="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-c8120360beb83f092e1ea5e77fa0771f7f755489.jar" />
+    </item>
+    <item
+        jar="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\design\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8a5238e4bdcd6568b82db669d41817de670586b8">
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-250769cfca865d6c5ad09ddaa3a08c048223c2b4.jar" />
+    </item>
+    <item
+        jar="E:\Jewel\Android(SDK 24)\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-a1fc226077520d23da3f1b10c097d2ae2bb5e273.jar" />
+    </item>
+    <item
+        jar="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-62b306b2c6d1aa9bf34bf009ff759e33f1966051.jar" />
+    </item>
+    <item
+        jar="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="C:\Users\nc\Desktop\projects\MyLogin\android\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-267dbc5c87101f0d69814ccf815314775f0d4532.jar" />
+>>>>>>> 98b8cd1e722828e8ccefcdad37841daba382762f
     </item>
 
 </items>
