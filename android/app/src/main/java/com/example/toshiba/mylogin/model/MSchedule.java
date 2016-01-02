@@ -4,9 +4,25 @@ package com.example.toshiba.mylogin.model;
  * Created by Jewel on 12/20/2015.
  */
 public class MSchedule {
-    private int id;
-    private String date, image,venue;
+    private int id,img_id;
+    private String text,date, image,venue;
 
+
+    public int getImg_id() {
+        return img_id;
+    }
+
+    public void setImg_id(int img_id) {
+        this.img_id = img_id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public String getVenue() {
         return venue;

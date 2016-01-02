@@ -50,10 +50,12 @@ public class ASchedule extends RecyclerView.Adapter<ASchedule.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MSchedule schedule = list.get(position);
         holder.date.setText(schedule.getDate());
-        Picasso.with(context)
+        holder.image.setImageResource(schedule.getImg_id());
+        /*Picasso.with(context)
                 .load(schedule.getImage())
                 .placeholder(R.drawable.loading)
-                .into(holder.image);
+                .into(holder.image);*/
+
 
     }
 

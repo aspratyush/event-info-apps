@@ -29,12 +29,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Venue : "/>
 
             <TextView
+                android:textColor="#00f"
+                android:text="Normal"
                 android:id="@+id/tvVenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -49,6 +47,7 @@
             android:textColor="#ffffff"
             android:background="#14237e"
             android:padding="10dp"
+            android:visibility="gone"
             android:text="How to Reach"/>
 
     </LinearLayout>

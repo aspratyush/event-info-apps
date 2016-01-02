@@ -50,11 +50,12 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void prepareDis(){
-        tvVenue.setText(schedule.getVenue());
-        Picasso.with(this)
+        tvVenue.setText(schedule.getText());
+        imgSchedule.setImageResource(schedule.getImg_id());
+        /*Picasso.with(this)
                 .load(schedule.getImage())
                 .placeholder(R.drawable.simple)
-                .into(imgSchedule);
+                .into(imgSchedule);*/
     }
 
 
