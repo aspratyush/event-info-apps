@@ -12,6 +12,7 @@ import com.example.toshiba.mylogin.adapter.AGalleryPhoto;
 import com.example.toshiba.mylogin.model.MGallery;
 import com.example.toshiba.mylogin.model.MSchedule;
 import com.example.toshiba.mylogin.utils.Globals;
+import com.example.toshiba.mylogin.utils.SpacesItemDecoration;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -55,6 +56,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         adapter = new AGalleryPhoto(this);
 
         recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(new SpacesItemDecoration(10));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         setSupportActionBar(toolbar);
