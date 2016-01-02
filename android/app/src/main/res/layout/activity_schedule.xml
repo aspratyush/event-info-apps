@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/app_bar"/>
+        layout="@layout/app_bar" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:orientation="vertical"
-        >
-
-        <ImageView
-            android:id="@+id/imgSchedule"
-            android:layout_width="match_parent"
-            android:layout_height="250dp" />
-
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-
-            <TextView
-                android:textColor="#00f"
-                android:text="Normal"
-                android:id="@+id/tvVenu"
+            <ImageView
+                android:id="@+id/imgSchedule"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="250dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tvVenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Normal"
+                    android:textColor="#00f" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnReach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#14237e"
+                android:padding="10dp"
+                android:text="How to Reach"
+                android:textColor="#ffffff" />
+
         </LinearLayout>
-
-
-        <Button
-            android:layout_gravity="center"
-            android:id="@+id/btnReach"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:background="#14237e"
-            android:padding="10dp"
-            android:visibility="gone"
-            android:text="How to Reach"/>
-
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

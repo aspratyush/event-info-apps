@@ -107,7 +107,7 @@ public class FragSchedule extends Fragment {
 
     private void prepareList() {
         schedules=new ArrayList<MSchedule>();
-        if(Globals.USER_TYPE==1){
+        if(Globals.USER_TYPE==11 || Globals.USER_TYPE==12){
             MSchedule schedule=new MSchedule();
             schedule.setImg_id(R.drawable.man_21);
             schedule.setDate("21/01/2016");
@@ -173,7 +173,7 @@ public class FragSchedule extends Fragment {
                     "Time\t: \n" +
                     "Venue\t: \n");
             schedules.add(schedule);
-        }else if(Globals.USER_TYPE==2){
+        }else if(Globals.USER_TYPE==21 || Globals.USER_TYPE==22){
             MSchedule schedule=new MSchedule();
             schedule.setImg_id(R.drawable.sha_21);
             schedule.setDate("21/01/2016");

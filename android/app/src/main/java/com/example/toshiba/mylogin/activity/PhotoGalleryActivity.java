@@ -68,6 +68,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         AsyncHttpClient client=new AsyncHttpClient();
         RequestParams params=new RequestParams();
         params.add("user_type", Globals.USER_TYPE+"");
+        params.add("gallery_type", type+"");
         client.post("http://step2code.com/pratyush/api/gallery", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {

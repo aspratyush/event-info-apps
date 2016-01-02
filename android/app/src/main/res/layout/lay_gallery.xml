@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -20,7 +21,8 @@
         android:text="PHOTOS" />
         <ImageView
             android:id="@+id/imgPhoto"
-            android:src="@drawable/simple"
+            android:background="@drawable/man_22"
+            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
@@ -42,7 +44,8 @@
             android:text="Videos" />
         <ImageView
             android:id="@+id/imgVideo"
-            android:src="@drawable/simple"
+            android:background="@drawable/sha_23"
+            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
