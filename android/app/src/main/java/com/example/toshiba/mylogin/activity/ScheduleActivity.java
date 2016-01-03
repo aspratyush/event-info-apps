@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class ScheduleActivity extends AppCompatActivity {
     public static MSchedule schedule;
-    private TextView tvVenue,tvDes,tvTime;
+    private TextView tvVenue,tvDes,tvTime,tvDress;
     private ImageView imgSchedule;
     private Toolbar toolbar;
     private Button btnReach;
@@ -46,6 +46,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
         tvDes = (TextView) findViewById(R.id.tvDes);
         tvVenue = (TextView) findViewById(R.id.tvVenu);
+        tvDress=(TextView)findViewById(R.id.tvDress);
         tvTime = (TextView) findViewById(R.id.tvTime);
         btnReach=(Button)findViewById(R.id.btnReach);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -74,6 +75,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private void prepareDis(){
         tvDes.setText(schedule.getDesc());
         tvVenue.setText("Venue : "+schedule.getVenue());
+        tvDress.setText("Dress Code : "+schedule.getDress_code());
         tvTime.setText("Time : "+schedule.getTime());
         imgSchedule.setImageResource(schedule.getImg_id());
         /*Picasso.with(this)

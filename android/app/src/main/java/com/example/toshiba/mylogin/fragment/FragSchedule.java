@@ -112,9 +112,8 @@ public class FragSchedule extends Fragment {
                     "Joy is a part of it\n" +
                     "Love is the heart of it\n" +
                     "With these, we begin a life full of Romance, Music and Beats\n" +
-                    "Dr Surita requests your presence at her Sagai & Sangeet\n" +
-                    "\n" +
-                    "Dress Code : IndoWestern\n");
+                    "Dr Surita requests your presence at her Sagai & Sangeet\n");
+            schedule.setDress_code("IndoWestern");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -123,12 +122,12 @@ public class FragSchedule extends Fragment {
             schedule.setImg_id(R.drawable.man_22);
             schedule.setDate("22/01/2016");
             schedule.setDesc("When dreams and reality meet,\n" +
-                    "It's time for Bollywood Dhamaal and treat,\n" +
-                    "Let Mehndi adorn your hands and spirit your feet,\n" +
-                    "All in a filmy avatar, ready to great!\n" +
-                    "Kapish, Vikas, Ishitaa, Pranav, Raunak, Roshini, Gitika, Anish, Nikeeta & Mihieka cordially invite you to celebrate the Mehendi party of their beloved sister, Dr Surita Mandhyan\n" +
-                    "\n" +
-                    "Dress Code : Bollywood\n");
+                            "It's time for Bollywood Dhamaal and treat,\n" +
+                            "Let Mehndi adorn your hands and spirit your feet,\n" +
+                            "All in a filmy avatar, ready to great!\n" +
+                            "Kapish, Vikas, Ishitaa, Pranav, Raunak, Roshini, Gitika, Anish, Nikeeta & Mihieka cordially invite you to celebrate the Mehendi party of their beloved sister, Dr Surita Mandhyan\n"
+            );
+            schedule.setDress_code(" Bollywood");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -136,8 +135,8 @@ public class FragSchedule extends Fragment {
             schedule = new MSchedule();
             schedule.setImg_id(R.drawable.man_23);
             schedule.setDate("23/01/2016");
-            schedule.setDesc("(TBD)\n" +
-                    "Dress Code : Traditional\n");
+            schedule.setDesc("(TBD)\n");
+            schedule.setDress_code("Traditional");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -150,8 +149,8 @@ public class FragSchedule extends Fragment {
                     "Soon she will seek the joys of life with Another,\n" +
                     "As time has come for the Bidaai of our daughter,\n" +
                     "Mrs Nita and Dr Suresh Mandhyan solicit your blessing for the Wedding Ceremony of their daughter, Dr Surita with Dr Dhaval.\n" +
-                    "\n" +
-                    "Dress Code: Dhoti for Men, Sari for Women\n");
+                    "\n");
+            schedule.setDress_code("Dhoti for Men, Sari for Women");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -165,8 +164,8 @@ public class FragSchedule extends Fragment {
                     "Sharing their lives together\n" +
                     "\n" +
                     "The Mandhyan Family cordially invite you to the Reception of Dr. Surita Mandhyan and Dr. Dhaval Shah\n" +
-                    "\n" +
-                    "Dress Code : Formal\n");
+                    "\n");
+            schedule.setDress_code("Formal");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -181,8 +180,8 @@ public class FragSchedule extends Fragment {
                     "Soon she will seek the joys of life with Another,\n" +
                     "As time has come for the Bidaai of our daughter,\n" +
                     "Mrs Nita and Dr Suresh Mandhyan solicit your blessing for the Wedding Ceremony of their daughter, Dr Surita with Dr Dhaval.\n" +
-                    "\n" +
-                    "Dress Code: Dhoti for Men, Sari for Women\n");
+                    "\n");
+            schedule.setDress_code(" Dhoti for Men, Sari for Women");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -196,8 +195,8 @@ public class FragSchedule extends Fragment {
                     "Sharing their lives together\n" +
                     "\n" +
                     "The Mandhyan Family cordially invite you to the Reception of Dr. Surita Mandhyan and Dr. Dhaval Shah\n" +
-                    "\n" +
-                    "Dress Code : Formal\n");
+                    "\n");
+            schedule.setDress_code("Formal");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -212,8 +211,8 @@ public class FragSchedule extends Fragment {
                     "Love is the heart of it\n" +
                     "With these, we begin a life full of Romance, Music and Beats\n" +
                     "Dr Surita requests your presence at her Sagai & Sangeet\n" +
-                    "\n" +
-                    "Dress Code : IndoWestern\n");
+                    "\n");
+            schedule.setDress_code("IndoWestern");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -226,8 +225,8 @@ public class FragSchedule extends Fragment {
                     "Soon she will seek the joys of life with Another,\n" +
                     "As time has come for the Bidaai of our daughter,\n" +
                     "Mrs Nita and Dr Suresh Mandhyan solicit your blessing for the Wedding Ceremony of their daughter, Dr Surita with Dr Dhaval.\n" +
-                    "\n" +
-                    "Dress Code: Dhoti for Men, Sari for Women\n");
+                    "\n");
+            schedule.setDress_code("Dhoti for Men, Sari for Women");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -241,8 +240,8 @@ public class FragSchedule extends Fragment {
                     "Sharing their lives together\n" +
                     "\n" +
                     "The Mandhyan Family cordially invite you to the Reception of Dr. Surita Mandhyan and Dr. Dhaval Shah\n" +
-                    "\n" +
-                    "Dress Code : Formal\n");
+                    "\n");
+            schedule.setDress_code("Formal");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -257,6 +256,7 @@ public class FragSchedule extends Fragment {
                     "What is a shadi without some thumkas and Naach Gana\n" +
                     "Come - perform - cheer - applaud !! \n" +
                     "Followed by Dinner \n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -268,6 +268,7 @@ public class FragSchedule extends Fragment {
                     "As we celebrate the coming together of two families, \n" +
                     "we would like to thank the almighty for this joyous occassion. \n" +
                     "Do join us for the Pooja followed by Lunch .\n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -281,6 +282,7 @@ public class FragSchedule extends Fragment {
                     "Come - help us make the groom glow with Haldi \n" +
                     "and match the awesomeness of the bride.\n" +
                     "Haldi and Mandap Mahurat followed by Lunch\n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -302,6 +304,7 @@ public class FragSchedule extends Fragment {
                     "Jaan Prasthan\t:\n" +
                     "Hasthmelap\t:\n" +
                     "Lunch\t\t:\n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -318,6 +321,7 @@ public class FragSchedule extends Fragment {
                     "matured and is now ready to be someones beloved wife !! \n" +
                     "Such joyous occassions dont come often. \n" +
                     "Please join us as we take the next step forward in our life.\n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -331,6 +335,7 @@ public class FragSchedule extends Fragment {
                     "As we celebrate the coming together of two families, \n" +
                     "we would like to thank the almighty for this joyous occassion. \n" +
                     "Do join us for the Pooja followed by Lunch .\n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -352,6 +357,7 @@ public class FragSchedule extends Fragment {
                     "Jaan Prasthan\t:\n" +
                     "Hasthmelap\t:\n" +
                     "Lunch\t\t:\n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -365,6 +371,7 @@ public class FragSchedule extends Fragment {
                     "What is a shadi without some thumkas and Naach Gana\n" +
                     "Come - perform - cheer - applaud !! \n" +
                     "Followed by Dinner \n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -386,6 +393,7 @@ public class FragSchedule extends Fragment {
                     "Jaan Prasthan\t:\n" +
                     "Hasthmelap\t:\n" +
                     "Lunch\t\t:\n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);
@@ -407,6 +415,7 @@ public class FragSchedule extends Fragment {
                     "Jaan Prasthan\t:\n" +
                     "Hasthmelap\t:\n" +
                     "Lunch\t\t:\n");
+            schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
             schedules.add(schedule);

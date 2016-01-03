@@ -5,8 +5,15 @@ package com.example.toshiba.mylogin.model;
  */
 public class MSchedule {
     private int id,img_id;
-    private String desc,time,venue,date;
+    private String desc,time,venue,date,dress_code;
 
+    public String getDress_code() {
+        return dress_code;
+    }
+
+    public void setDress_code(String dress_code) {
+        this.dress_code = dress_code;
+    }
 
     public String getDate() {
         return date;

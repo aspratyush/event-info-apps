@@ -32,10 +32,17 @@
 
 
                 <TextView
+                    android:textSize="20sp"
                     android:id="@+id/tvDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Des"
+                    android:textColor="#00f" />
+                <TextView
+                    android:id="@+id/tvDress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
                     android:textColor="#00f" />
                 <TextView
                     android:id="@+id/tvTime"
