@@ -399,7 +399,7 @@ public class FragSchedule extends Fragment {
             schedules.add(schedule);
 
             schedule = new MSchedule();
-            schedule.setImg_id(R.drawable.sha_24);
+            schedule.setImg_id(R.drawable.sha_25);
             schedule.setDate("24/01/2016");
             schedule.setDesc("Weddings are unique in a way. \n" +
                     "Please laugh & people cry. \n" +

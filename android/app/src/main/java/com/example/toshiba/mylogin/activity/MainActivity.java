@@ -84,8 +84,21 @@ public class MainActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
 
                 drawer.closeDrawers();
-                WebActivity.url="https://aspratyush.wordpress.com/";
-                startActivity(new Intent(MainActivity.this,WebActivity.class));
+                switch (menuItem.getItemId()){
+                    case R.id.dmenu_contact:
+                        WebActivity.url="https://aspratyush.wordpress.com/";
+                        startActivity(new Intent(MainActivity.this,WebActivity.class));
+                        break;
+                    case R.id.dmenu_donate:
+                        WebActivity.url="https://aspratyush.wordpress.com/";
+                        startActivity(new Intent(MainActivity.this,WebActivity.class));
+                        break;
+                    case R.id.dmenu_notification:
+                        WebActivity.url="https://aspratyush.wordpress.com/";
+                        startActivity(new Intent(MainActivity.this,WebActivity.class));
+                        break;
+                }
+
                 return true;
             }
         });
@@ -104,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("App Name");
+
     }
 
     private void setupViewPager() {
