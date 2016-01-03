@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="app_bar_top_padding">0dp</dimen>
+
+    <dimen name="dp50">50dp</dimen>
     <dimen name="dp100">100dp</dimen>
     <dimen name="dp200">200dp</dimen>
 </resources>

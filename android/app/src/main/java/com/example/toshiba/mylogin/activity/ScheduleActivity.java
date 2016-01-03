@@ -1,5 +1,6 @@
 package com.example.toshiba.mylogin.activity;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class ScheduleActivity extends AppCompatActivity {
     public static MSchedule schedule;
-    private TextView tvVenue;
+    private TextView tvVenue,tvDes,tvTime;
     private ImageView imgSchedule;
     private Toolbar toolbar;
     private Button btnReach;
@@ -42,9 +43,18 @@ public class ScheduleActivity extends AppCompatActivity {
 
     private void init() {
         imgSchedule=(ImageView)findViewById(R.id.imgSchedule);
+
+        tvDes = (TextView) findViewById(R.id.tvDes);
         tvVenue = (TextView) findViewById(R.id.tvVenu);
+        tvTime = (TextView) findViewById(R.id.tvTime);
         btnReach=(Button)findViewById(R.id.btnReach);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+        //setting custom fonts
+        Typeface face = Typeface.createFromAsset(getAssets(),
+                "fonts/candlescript.otf");
+        tvDes.setTypeface(face);
 
         setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle(getDay());
@@ -62,7 +72,9 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void prepareDis(){
-        tvVenue.setText(schedule.getText());
+        tvDes.setText(schedule.getDesc());
+        tvVenue.setText("Venue : "+schedule.getVenue());
+        tvTime.setText("Time : "+schedule.getTime());
         imgSchedule.setImageResource(schedule.getImg_id());
         /*Picasso.with(this)
                 .load(schedule.getImage())

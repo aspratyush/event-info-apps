@@ -5,31 +5,15 @@ package com.example.toshiba.mylogin.model;
  */
 public class MSchedule {
     private int id,img_id;
-    private String text,date, image,venue;
+    private String desc,time,venue,date;
 
 
-    public int getImg_id() {
-        return img_id;
+    public String getDate() {
+        return date;
     }
 
-    public void setImg_id(int img_id) {
-        this.img_id = img_id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getVenue() {
-        return venue;
-    }
-
-    public void setVenue(String venue) {
-        this.venue = venue;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getId() {
@@ -40,19 +24,35 @@ public class MSchedule {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
+    public int getImg_id() {
+        return img_id;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setImg_id(int img_id) {
+        this.img_id = img_id;
     }
 
-    public String getImage() {
-        return image;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getVenue() {
+        return venue;
+    }
+
+    public void setVenue(String venue) {
+        this.venue = venue;
     }
 }
