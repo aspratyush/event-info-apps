@@ -4,30 +4,50 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.utils.Globals;
 
 /**
  * Created by TOSHIBA on 12/17/2015.
  */
 public class SwitcherActivity extends AppCompatActivity {
+    private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sp = getSharedPreferences("pratyush", Context.MODE_PRIVATE);
-        int user_id = sp.getInt("user_id", 0);
-        int user_type = sp.getInt("user_type", 0);
+        setContentView(R.layout.lay_splash);
 
-        Globals.USER_ID = user_id;
-        Globals.USER_TYPE = user_type;
+        handler=new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences sp = getSharedPreferences("pratyush", Context.MODE_PRIVATE);
+                int user_id = sp.getInt("user_id", 0);
+                int user_type = sp.getInt("user_type", 0);
 
-        if (user_id == 0) {
-            startActivity(new Intent(this, LoginActivity.class));
-        }else{
-            startActivity(new Intent(this, MainActivity.class));
-        }
+                Globals.USER_ID = user_id;
+                Globals.USER_TYPE = user_type;
 
-        finish();
+                if (user_id == 0) {
+                    startActivity(new Intent(SwitcherActivity.this, LoginActivity.class));
+                } else {
+                    startActivity(new Intent(SwitcherActivity.this, MainActivity.class));
+                }
+
+                finish();
+            }
+        }, 5000);
+
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
+        handler=null;
     }
 }

@@ -116,6 +116,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("IndoWestern");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -130,6 +131,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code(" Bollywood");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -139,6 +141,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("Traditional");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -153,6 +156,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("Dhoti for Men, Sari for Women");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -168,6 +172,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("Formal");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             // for mandhyan_213455
@@ -184,6 +189,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code(" Dhoti for Men, Sari for Women");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -199,6 +205,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("Formal");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
         }
         // for mandhyan_345589
@@ -215,6 +222,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("IndoWestern");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -229,6 +237,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("Dhoti for Men, Sari for Women");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -244,6 +253,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("Formal");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
         }
 
@@ -259,6 +269,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -271,6 +282,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -285,6 +297,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -307,6 +320,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -324,6 +338,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             // for shah_213455
@@ -338,6 +353,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -360,6 +376,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             // for shah_345589
@@ -374,6 +391,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -396,6 +414,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
             schedule = new MSchedule();
@@ -418,6 +437,7 @@ public class FragSchedule extends Fragment {
             schedule.setDress_code("");
             schedule.setTime("");
             schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
         }

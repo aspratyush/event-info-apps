@@ -1,6 +1,8 @@
 package com.example.toshiba.mylogin.activity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -65,7 +67,13 @@ public class ScheduleActivity extends AppCompatActivity {
         btnReach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ScheduleActivity.this,"Google maps is preparing to guide you",Toast.LENGTH_LONG).show();
+                String location="geo:0,0?q=bangabandhu+stadium+dhaka";
+                Uri gmmIntentUri = Uri.parse(schedule.getLocation());
+                Intent mapIntent = new Intent( Intent.ACTION_VIEW, gmmIntentUri );
+                mapIntent.setPackage( "com.google.android.apps.maps" );
+                if (mapIntent.resolveActivity( getPackageManager() ) != null) {
+                    startActivity(mapIntent);
+                }
             }
         });
 
