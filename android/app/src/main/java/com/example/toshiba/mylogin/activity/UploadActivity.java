@@ -20,15 +20,22 @@ import android.widget.Toast;
 import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.utils.Globals;
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+
+import cz.msebera.android.httpclient.Header;
 
 public class UploadActivity extends AppCompatActivity {
 
@@ -258,7 +265,7 @@ public class UploadActivity extends AppCompatActivity {
 
             dialog = ProgressDialog.show(UploadActivity.this, "", "Uploading file...", true);
 
-            new Thread(new Runnable() {
+            /*new Thread(new Runnable() {
                 public void run() {
                     runOnUiThread(new Runnable() {
                         public void run() {
@@ -269,8 +276,37 @@ public class UploadActivity extends AppCompatActivity {
                     uploadFile(filePath);
 
                 }
-            }).start();
+            }).start();*/
 
+            AsyncHttpClient client=new AsyncHttpClient();
+            File file=new File(filePath);
+            RequestParams params=new RequestParams();
+            try {
+                params.put("user_id",Globals.USER_ID+"");
+                params.put("test",file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            client.post(upLoadServerUri,params,new JsonHttpResponseHandler(){
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    super.onSuccess(statusCode, headers, response);
+                    dialog.dismiss();
+                    try {
+                        String status=response.getString("status");
+                        messageText.setText(status+"");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+                    dialog.dismiss();
+                    messageText.setText(responseString);
+                }
+            });
         }
 
     }
