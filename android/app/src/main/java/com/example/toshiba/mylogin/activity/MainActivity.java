@@ -1,6 +1,9 @@
 package com.example.toshiba.mylogin.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -8,6 +11,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -15,12 +19,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.toshiba.mylogin.GCM.RegistrationIntentService;
 import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.fragment.FragAboutUs;
 import com.example.toshiba.mylogin.fragment.FragGallery;
 import com.example.toshiba.mylogin.fragment.FragSchedule;
+import com.example.toshiba.mylogin.utils.Globals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton btnFloating;
     private NavigationView navigationView;
 
+    private BroadcastReceiver updateReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
         prepareToolbar();
         setupViewPager();
         setupTabLayout();
+
+        updateReceiver=new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                //tvStatus.setText(intent.getStringExtra("message"));
+            }
+        };
+        Intent intent = new Intent(this, RegistrationIntentService.class);
+        startService(intent);
+
     }
 
     @Override
@@ -75,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 /*Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image*//*");
                 startActivityForResult(intent,10);*/
-                startActivity(new Intent(MainActivity.this,UploadActivity.class));
+                startActivity(new Intent(MainActivity.this, UploadActivity.class));
             }
         });
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -84,18 +100,31 @@ public class MainActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
 
                 drawer.closeDrawers();
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.dmenu_contact:
-                        WebActivity.url="https://aspratyush.wordpress.com/";
-                        startActivity(new Intent(MainActivity.this,WebActivity.class));
+                        //for mandhyan family
+                        if (Globals.USER_TYPE == 11 || Globals.USER_TYPE == 12)
+                            WebActivity.url = "https://aspratyush.wordpress.com/";
+                        else
+                        //for sha family
+                            WebActivity.url = "https://github.com/aspratyush";
+                        startActivity(new Intent(MainActivity.this, WebActivity.class));
                         break;
                     case R.id.dmenu_donate:
-                        WebActivity.url="https://aspratyush.wordpress.com/";
-                        startActivity(new Intent(MainActivity.this,WebActivity.class));
+                        if (Globals.USER_TYPE == 11 || Globals.USER_TYPE == 12)
+                            WebActivity.url = "https://aspratyush.wordpress.com/";
+                        else
+                            //for sha family
+                            WebActivity.url = "https://github.com/aspratyush";
+                        startActivity(new Intent(MainActivity.this, WebActivity.class));
                         break;
                     case R.id.dmenu_notification:
-                        WebActivity.url="https://aspratyush.wordpress.com/";
-                        startActivity(new Intent(MainActivity.this,WebActivity.class));
+                        if (Globals.USER_TYPE == 11 || Globals.USER_TYPE == 12)
+                            WebActivity.url = "https://aspratyush.wordpress.com/";
+                        else
+                            //for sha family
+                            WebActivity.url = "https://github.com/aspratyush";
+                        startActivity(new Intent(MainActivity.this, WebActivity.class));
                         break;
                 }
 
@@ -105,6 +134,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(updateReceiver, new IntentFilter("UPDATE_UI"));
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(updateReceiver);
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

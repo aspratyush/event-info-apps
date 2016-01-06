@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.activity.WebActivity;
 import com.example.toshiba.mylogin.model.MSchedule;
+import com.example.toshiba.mylogin.utils.Globals;
 import com.example.toshiba.mylogin.utils.LoadingDialog;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -106,11 +107,19 @@ public class FragAboutUs extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.imgUs:
-                WebActivity.url="https://aspratyush.wordpress.com/";
+                if (Globals.USER_TYPE == 11 || Globals.USER_TYPE == 12)
+                    WebActivity.url = "https://aspratyush.wordpress.com/";
+                else
+                    //for sha family
+                    WebActivity.url = "https://github.com/aspratyush";
                 getActivity().startActivity(new Intent(getActivity(), WebActivity.class));
                 break;
             case R.id.imgFamily:
-                WebActivity.url="https://aspratyush.wordpress.com/";
+                if (Globals.USER_TYPE == 11 || Globals.USER_TYPE == 12)
+                    WebActivity.url = "https://aspratyush.wordpress.com/";
+                else
+                    //for sha family
+                    WebActivity.url = "https://github.com/aspratyush";
                 getActivity().startActivity(new Intent(getActivity(), WebActivity.class));
                 break;
         }

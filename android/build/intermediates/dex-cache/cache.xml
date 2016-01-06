@@ -2,18 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Jewel\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.9\386a4339ffe52d5d63e80f9bed8d2b1d1a418249\android-async-http-1.4.9.jar"
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
-        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.9-b5baa1399167d7d1b606b6395e510ae40ac194d7.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jewel\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.3\1262995965440e28ba5c4d480c9c9ab4ccce84cc\picasso-2.3.3.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1262995965440e28ba5c4d480c9c9ab4ccce84cc">
-        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\picasso-2.3.3-7b762263134a1d23e73705168f2fcdcd8c3ab5a9.jar" />
+        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-f38620222101da294bc48c3ea0067e2b7b56de66.jar" />
     </item>
     <item
         jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\design\23.0.0\jars\classes.jar"
@@ -23,25 +16,18 @@
         <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-74875c394f26b027e1747ef224fbfe1801736a3d.jar" />
     </item>
     <item
-        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
+        jar="D:\SOFTWER\Programming\Android\Android(SDK 24)\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
-        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-3eea5b855f4d05ed54a744a1ea3a957cf46fee8b.jar" />
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-dea85518c35d81b201150f12b13a487db4426f93.jar" />
     </item>
     <item
-        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.8.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
-        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-b3a064385821bba6f576f71e7c73134646b85417.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jewel\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.3.6\526a9f794eab830eae4f23a62c572878b3f491ab\httpclient-4.3.6.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
-        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\httpclient-4.3.6-d65ca6d8508fbcfb1d7b06e2e60c93ad7da28c36.jar" />
+        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-7bcd12607671f6c5de50d7744054d09ab512ebdc.jar" />
     </item>
     <item
         jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
@@ -51,6 +37,55 @@
         <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-a32971a6c836c5e0af03723146a6b2de24b83e1e.jar" />
     </item>
     <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-e84e530d3b52cd1bc9b3bafdf019187314ff0f1f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-de6f6a6ba2bf2512add285f4d770abc9cbe61ef1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-d2ec41042f346b612ca4f9ef3aac7cf0db37a89c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-0001d6b09961ddfd2ee6acf6756b45f8eab3c557.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-ed200f255a7f47165066b2704dd8d04d841fc6d0.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-cb7a1871aca7a7e9c95fa3b018697a020408d00e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.3.6\526a9f794eab830eae4f23a62c572878b3f491ab\httpclient-4.3.6.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\httpclient-4.3.6-d65ca6d8508fbcfb1d7b06e2e60c93ad7da28c36.jar" />
+    </item>
+    <item
         jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
@@ -58,11 +93,137 @@
         <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-df5f92cd73c155c2dd1561b66f2b79635edf7fe9.jar" />
     </item>
     <item
-        jar="D:\SOFTWER\Programming\Android\Android(SDK 24)\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
-        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-dea85518c35d81b201150f12b13a487db4426f93.jar" />
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-2b8c2daabf8a6118e9b3b16b036058472615e82c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-013a9189ebe98ad446a700e54e235f5e0de98faf.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.3\1262995965440e28ba5c4d480c9c9ab4ccce84cc\picasso-2.3.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1262995965440e28ba5c4d480c9c9ab4ccce84cc">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\picasso-2.3.3-7b762263134a1d23e73705168f2fcdcd8c3ab5a9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-b9cfe0bae58f3a4864df4b089637f41e93d59dca.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-9407af43b79b00b7297dbcabd216b4f369504723.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.9\386a4339ffe52d5d63e80f9bed8d2b1d1a418249\android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.9-b5baa1399167d7d1b606b6395e510ae40ac194d7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-b3a064385821bba6f576f71e7c73134646b85417.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-5c20c33980e0826f4303d05db6ca290a73366546.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-4df8926e36538d7f085a1e13c75ac4aa98d211b7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-156e8e678b56f2a7860d4eda9c9d0df36bd879a4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-24db58c6a1ff348a41f33080edc06e86696623e5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="adebe28e0c0c05d34a3bfd76f3275bf4d8ff87b6">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-f47f3c9f1a21865415f77dbb6f0d6ed2d748ba08.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-253f8d1d0b73e6504c51c2cb5211bd117dab44c1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2e24e5f1b11170163028277de63f709e42525db4">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-4d21d7e24994e025dc81ca6ccf83291135960def.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-cee38bbde58347a2483893168e11dadd13c6ee9c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-3eea5b855f4d05ed54a744a1ea3a957cf46fee8b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-fb2e1767fe271909ece3989d2bc6a8166aa2435d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2491ae1b2a848af1f4f0c795f3117c1bd6a1989f">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-4612617886f40840c2250293a4db79822e971f49.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.8.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
+        <dex dex="C:\Users\Jewel\Desktop\MyLogin\android\app\build\intermediates\pre-dexed\debug\classes-fbdbad36b513700584c68f272c45f07ee042e580.jar" />
     </item>
 
 </items>
