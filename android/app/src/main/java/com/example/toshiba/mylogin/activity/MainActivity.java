@@ -17,8 +17,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.toshiba.mylogin.GCM.RegistrationIntentService;
 import com.example.toshiba.mylogin.R;
@@ -26,9 +28,16 @@ import com.example.toshiba.mylogin.fragment.FragAboutUs;
 import com.example.toshiba.mylogin.fragment.FragGallery;
 import com.example.toshiba.mylogin.fragment.FragSchedule;
 import com.example.toshiba.mylogin.utils.Globals;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -55,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 //tvStatus.setText(intent.getStringExtra("message"));
+                Toast.makeText(context,"Secceed",Toast.LENGTH_LONG).show();
+                String token=intent.getStringExtra("token");
+                sendRegistrationToServer(token);
+
             }
         };
         Intent intent = new Intent(this, RegistrationIntentService.class);
@@ -73,6 +86,28 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void sendRegistrationToServer(String token) {
+        Log.d("Jewel","call to"+token);
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        //params.add("id",s);
+        params.add("regId", token);
+        params.add("name", "");
+        params.add("email", "");
+        client.post("http://step2code.com/gcm/api/register", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.d("Jewel", "status " + response.toString());
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.d("Jewel", "status " + responseString);
+            }
+        });
+    }
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer);
@@ -137,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(updateReceiver, new IntentFilter("UPDATE_UI"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(updateReceiver, new IntentFilter("gcm intent"));
     }
     @Override
     protected void onPause() {

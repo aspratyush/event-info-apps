@@ -52,7 +52,7 @@ public class MyGcmListenerService extends GcmListenerService {
 
     private void updateUI(Bundle data) {
         String message = data.getString("message");
-        Intent newMessage = new Intent("UPDATE_UI");
+        Intent newMessage = new Intent("gcm intent");
         newMessage.putExtra("message",message);
 
         LocalBroadcastManager.getInstance(this).sendBroadcast(newMessage);
