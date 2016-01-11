@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imgSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:textSize="20sp"
+                    android:id="@+id/tvDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Des"
+                    android:textColor="#00f" />
+                <TextView
+                    android:textSize="17sp"
+                    android:id="@+id/tvDress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textColor="#00f" />
+                <TextView
+                    android:textSize="17sp"
+                    android:id="@+id/tvTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textColor="#00f" />
+                <TextView
+                    android:textSize="17sp"
+                    android:id="@+id/tvVenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Venue"
+                    android:textColor="#00f" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnReach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#14237e"
+                android:padding="10dp"
+                android:text="How to Reach"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

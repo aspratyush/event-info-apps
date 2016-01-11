@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/dmenu_donate"
+            android:icon="@drawable/donate"
+            android:title="Donate" />
+        <item
+            android:id="@+id/dmenu_notification"
+            android:icon="@drawable/notification"
+            android:title="Notification" />
+        <item
+            android:id="@+id/dmenu_contact"
+            android:icon="@drawable/contact_us"
+            android:title="Contact Us" />
+    </group>
+
+</menu>

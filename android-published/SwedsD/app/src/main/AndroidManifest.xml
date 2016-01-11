@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="in.confluenceoftech.android.swedsd" >
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.example.toshiba.mylogin.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.toshiba.mylogin.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="in.confluenceoftech.android.swedsd.activity.SwitcherActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="in.confluenceoftech.android.swedsd.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity android:name="in.confluenceoftech.android.swedsd.activity.ScheduleActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity android:name="in.confluenceoftech.android.swedsd.activity.PhotoGalleryActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="in.confluenceoftech.android.swedsd.activity.MainActivity"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
+        <activity
+            android:name="in.confluenceoftech.android.swedsd.activity.SimpleActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_simple" >
+        </activity>
+        <activity
+            android:name="in.confluenceoftech.android.swedsd.activity.WebActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_web" >
+        </activity>
+        <activity
+            android:name="in.confluenceoftech.android.swedsd.activity.UploadActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_upload" >
+        </activity>
+
+
+        <!-- [START gcm_receiver] -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="in.confluenceoftech.android.swedsd" />
+            </intent-filter>
+        </receiver>
+        <!-- [END gcm_receiver] -->
+
+        <!-- [START gcm_listener] -->
+        <service
+            android:name="in.confluenceoftech.android.swedsd.GCM.MyGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <!-- [END gcm_listener] -->
+        <!-- [START instanceId_listener] -->
+        <service
+            android:name="in.confluenceoftech.android.swedsd.GCM.MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
+            </intent-filter>
+        </service>
+        <!-- [END instanceId_listener] -->
+        <service
+            android:name="in.confluenceoftech.android.swedsd.GCM.RegistrationIntentService"
+            android:exported="false">
+        </service>
+    </application>
+
+</manifest>
