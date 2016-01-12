@@ -104,7 +104,7 @@ public class FragSchedule extends Fragment {
     private void prepareList() {
         schedules = new ArrayList<MSchedule>();
         // for mandhyan_132134
-        if (Globals.USER_ID == 1) {
+        if (Globals.USER_ID == 1||Globals.USER_ID == 7) {
             MSchedule schedule = new MSchedule();
             schedule.setImg_id(R.drawable.man_21);
             schedule.setDate("21/01/2016");
@@ -176,7 +176,7 @@ public class FragSchedule extends Fragment {
             schedules.add(schedule);
 
             // for mandhyan_213455
-        } else if (Globals.USER_ID == 2) {
+        } else if (Globals.USER_ID == 2||Globals.USER_ID == 8) {
             MSchedule schedule = new MSchedule();
             schedule.setImg_id(R.drawable.man_24);
             schedule.setDate("24/01/2016");
@@ -209,7 +209,7 @@ public class FragSchedule extends Fragment {
             schedules.add(schedule);
         }
         // for mandhyan_345589
-        else if (Globals.USER_ID == 3) {
+        else if (Globals.USER_ID == 3 || Globals.USER_ID == 9) {
             MSchedule schedule = new MSchedule();
             schedule.setImg_id(R.drawable.man_21);
             schedule.setDate("21/01/2016");
@@ -258,7 +258,7 @@ public class FragSchedule extends Fragment {
         }
 
         // sha family : for shah_132134
-        else if (Globals.USER_ID==4) {
+        else if (Globals.USER_ID==4 || Globals.USER_ID == 10) {
             MSchedule schedule = new MSchedule();
             schedule.setImg_id(R.drawable.sha_21);
             schedule.setDate("21/01/2016");
@@ -342,7 +342,7 @@ public class FragSchedule extends Fragment {
             schedules.add(schedule);
 
             // for shah_213455
-        }else if(Globals.USER_ID==5){
+        }else if(Globals.USER_ID==5 || Globals.USER_ID == 11){
             MSchedule schedule = new MSchedule();
             schedule.setImg_id(R.drawable.sha_22);
             schedule.setDate("22/01/2016");
@@ -380,7 +380,7 @@ public class FragSchedule extends Fragment {
             schedules.add(schedule);
 
             // for shah_345589
-        }else if(Globals.USER_ID==6){
+        }else if(Globals.USER_ID==6 || Globals.USER_ID == 12){
             MSchedule schedule = new MSchedule();
             schedule.setImg_id(R.drawable.sha_21);
             schedule.setDate("21/01/2016");

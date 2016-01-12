@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 //tvStatus.setText(intent.getStringExtra("message"));
-                Toast.makeText(context,"Secceed",Toast.LENGTH_LONG).show();
+                //Toast.makeText(context,"Secceed",Toast.LENGTH_LONG).show();
                 String token=intent.getStringExtra("token");
                 sendRegistrationToServer(token);
 
@@ -87,14 +87,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendRegistrationToServer(String token) {
-        Log.d("Jewel","call to"+token);
+
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        //params.add("id",s);
-        params.add("regId", token);
-        params.add("name", "");
-        params.add("email", "");
-        client.post("http://step2code.com/gcm/api/register", params, new JsonHttpResponseHandler() {
+
+        params.add("gcm_id", token);
+        params.add("user_id",Globals.USER_ID+"");
+
+        client.post("http://step2code.com/pratyush-gcm/api/register", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
