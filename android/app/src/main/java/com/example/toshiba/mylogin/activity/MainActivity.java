@@ -4,7 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -20,6 +25,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.toshiba.mylogin.GCM.RegistrationIntentService;
@@ -28,18 +35,26 @@ import com.example.toshiba.mylogin.fragment.FragAboutUs;
 import com.example.toshiba.mylogin.fragment.FragGallery;
 import com.example.toshiba.mylogin.fragment.FragSchedule;
 import com.example.toshiba.mylogin.utils.Globals;
+import com.example.toshiba.mylogin.utils.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int RESULT_LOAD_IMG = 100;
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private ViewPager viewPager;
@@ -47,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter adapter;
     private FloatingActionButton btnFloating;
     private NavigationView navigationView;
+    private String upLoadServerUri = "http://step2code.com/pratyush/api/uploadImage";
 
     private BroadcastReceiver updateReceiver;
 
@@ -63,8 +79,7 @@ public class MainActivity extends AppCompatActivity {
         updateReceiver=new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                //tvStatus.setText(intent.getStringExtra("message"));
-                //Toast.makeText(context,"Secceed",Toast.LENGTH_LONG).show();
+
                 String token=intent.getStringExtra("token");
                 sendRegistrationToServer(token);
 
@@ -92,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         RequestParams params = new RequestParams();
 
         params.add("gcm_id", token);
-        params.add("user_id",Globals.USER_ID+"");
+        params.add("user_id", Globals.USER_ID + "");
 
         client.post("http://step2code.com/pratyush-gcm/api/register", params, new JsonHttpResponseHandler() {
             @Override
@@ -122,11 +137,9 @@ public class MainActivity extends AppCompatActivity {
         btnFloating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "Upload testing", Toast.LENGTH_SHORT).show();
-                /*Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image*//*");
-                startActivityForResult(intent,10);*/
-                startActivity(new Intent(MainActivity.this, UploadActivity.class));
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, RESULT_LOAD_IMG);
+                //startActivity(new Intent(MainActivity.this, UploadActivity.class));
             }
         });
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -141,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                         if (Globals.USER_TYPE == 11 || Globals.USER_TYPE == 12)
                             WebActivity.url = "https://aspratyush.wordpress.com/";
                         else
-                        //for sha family
+                            //for sha family
                             WebActivity.url = "https://github.com/aspratyush";
                         startActivity(new Intent(MainActivity.this, WebActivity.class));
                         break;
@@ -170,6 +183,86 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == RESULT_LOAD_IMG && data != null) {
+            //Uri uri = data.getData();
+            //TextView statusText = (TextView) findViewById(R.id.messageText);
+            //statusText.setText("Uploading.. " + uri);
+
+
+
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            final String filePath = cursor.getString(columnIndex);
+
+            cursor.close();
+            // Convert file path into bitmap image using below line.
+            Bitmap scaledImage = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(filePath), 1024, 768, true);
+
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            scaledImage.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            byte[] bitmapdata = bos.toByteArray();
+            File f = new File(getCacheDir(), Globals.USER_ID + "_" + System.currentTimeMillis() + ".png");
+
+            //write the bytes in file
+            FileOutputStream fos = null;
+            try {
+
+                f.createNewFile();
+                fos = new FileOutputStream(f);
+                fos.write(bitmapdata);
+                fos.flush();
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            Utils.sendNotfication(this, "Info", "Uploading...");
+
+            params.put("user_id", Globals.USER_ID + "");
+            params.put("gallery_type", 1 + "");
+            try {
+                params.put("test", f);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            client.post(upLoadServerUri, params, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    super.onSuccess(statusCode, headers, response);
+                    try {
+                        String status = response.getString("status");
+                        Utils.sendNotfication(MainActivity.this, "Info", "Uploaded succeed");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+
+                    Utils.sendNotfication(MainActivity.this, "Info", "Uploaded failed");
+                }
+            });
+        }
+
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         LocalBroadcastManager.getInstance(this).registerReceiver(updateReceiver, new IntentFilter("gcm intent"));
@@ -178,11 +271,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(updateReceiver);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
     }
 
     private void prepareToolbar() {
@@ -234,11 +322,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.mainContent, fragment).commit();
 
-    }
 
     class MyAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<Fragment>();

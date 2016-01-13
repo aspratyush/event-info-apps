@@ -11,6 +11,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://E:/Jewel/Android(SDK 24)/sdk/extras/android/m2repository/com/android/support/support-v4/23.0.0/support-v4-23.0.0-sources.jar!/" />
+      <root url="jar://D:/SOFTWER/Programming/Android/Android(SDK 24)/sdk/extras/android/m2repository/com/android/support/support-v4/23.0.0/support-v4-23.0.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
