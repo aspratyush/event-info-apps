@@ -1,24 +1,26 @@
 package com.example.toshiba.mylogin.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.utils.Globals;
+import com.example.toshiba.mylogin.utils.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -26,29 +28,22 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.DataOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import cz.msebera.android.httpclient.Header;
 
 public class UploadActivity extends AppCompatActivity {
 
-    /**********
-     * File Path
-     *************/
-    final String uploadFilePath = Environment.getExternalStorageDirectory().getPath();
-    final String uploadFileName = "a.jpg";
+    private static final int RESULT_LOAD_IMG = 100;
     TextView messageText;
     Button uploadButton;
-    int serverResponseCode = 0;
     ProgressDialog dialog = null;
     String upLoadServerUri = null;
+    private Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,18 +51,18 @@ public class UploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        context = this;
         uploadButton = (Button) findViewById(R.id.uploadButton);
         messageText = (TextView) findViewById(R.id.messageText);
 
         //setup actionbar
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        messageText.setText( "");
+        messageText.setText("");
 
         /************* Php script path ****************/
-        //upLoadServerUri = "http://www.step2code.com/upload/upload.php";
         upLoadServerUri = "http://step2code.com/pratyush/api/uploadImage";
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +77,7 @@ public class UploadActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -90,15 +85,17 @@ public class UploadActivity extends AppCompatActivity {
 
 
     private void selectFile() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent, 100);
+        /*Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image*//*");*/
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, RESULT_LOAD_IMG);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK){
+        if (resultCode == RESULT_OK && requestCode == RESULT_LOAD_IMG && data != null) {
             Uri uri = data.getData();
             TextView statusText = (TextView) findViewById(R.id.messageText);
             statusText.setText("Sending: " + uri);
@@ -117,31 +114,55 @@ public class UploadActivity extends AppCompatActivity {
 
             cursor.close();
             // Convert file path into bitmap image using below line.
-            //yourSelectedImage = BitmapFactory.decodeFile(filePath);
-            ((ImageView) findViewById(R.id.img)).setImageBitmap(BitmapFactory.decodeFile(filePath));
+            Bitmap scaledImage = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(filePath), 1024, 768, true);
 
-            dialog = ProgressDialog.show(UploadActivity.this, "", "Uploading file...", true);
+            //((ImageView) findViewById(R.id.img)).setImageBitmap(BitmapFactory.decodeFile(filePath));
+            ((ImageView) findViewById(R.id.img)).setImageBitmap(scaledImage);
 
 
+            //dialog = ProgressDialog.show(UploadActivity.this, "", "Uploading file...", true);
 
-            AsyncHttpClient client=new AsyncHttpClient();
-            File file=new File(filePath);
-            RequestParams params=new RequestParams();
+
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            scaledImage.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            byte[] bitmapdata = bos.toByteArray();
+            File f = new File(getCacheDir(), Globals.USER_ID + "_" + System.currentTimeMillis() + ".png");
+
+            //write the bytes in file
+            FileOutputStream fos = null;
             try {
-                params.put("user_id",Globals.USER_ID+"");
-                params.put("gallery_type",1+"");
-                params.put("test",file);
+
+                f.createNewFile();
+                fos = new FileOutputStream(f);
+                fos.write(bitmapdata);
+                fos.flush();
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            Utils.sendNotfication(this, "Info", "Uploading...");
+
+            params.put("user_id", Globals.USER_ID + "");
+            params.put("gallery_type", 1 + "");
+            try {
+                params.put("test", f);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            client.post(upLoadServerUri,params,new JsonHttpResponseHandler(){
+
+            client.post(upLoadServerUri, params, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     super.onSuccess(statusCode, headers, response);
-                    dialog.dismiss();
                     try {
-                        String status=response.getString("status");
-                        messageText.setText(status+"");
+                        String status = response.getString("status");
+                        Utils.sendNotfication(context, "Info", "Uploaded");
+                        messageText.setText(status + "");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -150,11 +171,12 @@ public class UploadActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                     super.onFailure(statusCode, headers, responseString, throwable);
-                    dialog.dismiss();
                     messageText.setText(responseString);
+                    Utils.sendNotfication(context, "Info", "Uploaded");
                 }
             });
         }
 
     }
+
 }

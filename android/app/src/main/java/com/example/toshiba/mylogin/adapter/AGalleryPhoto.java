@@ -51,7 +51,7 @@ public class AGalleryPhoto extends RecyclerView.Adapter<AGalleryPhoto.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MGallery schedule = galleries.get(position);
         Picasso.with(context)
-                .load("http://step2code.com/pratyush/uploads/"+schedule.getSrc())
+                .load("http://step2code.com/pratyush/uploads/image/small/"+schedule.getSrc())
                 .placeholder(R.drawable.loading)
                 .into(holder.imgPhoto);
 

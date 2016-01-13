@@ -3,6 +3,7 @@ package com.example.toshiba.mylogin.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -35,7 +36,7 @@ public class SimpleActivity extends AppCompatActivity {
 
     private void prepareDis(){
         Picasso.with(this)
-                .load(gallery.getSrc())
+                .load("http://step2code.com/pratyush/uploads/image/large/"+gallery.getSrc())
                 .placeholder(R.drawable.simple)
                 .into(imgPhoto);
     }
