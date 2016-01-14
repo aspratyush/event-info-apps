@@ -13,6 +13,7 @@ import com.example.toshiba.mylogin.model.MGallery;
 import com.example.toshiba.mylogin.model.MSchedule;
 import com.example.toshiba.mylogin.utils.Globals;
 import com.example.toshiba.mylogin.utils.SpacesItemDecoration;
+import com.example.toshiba.mylogin.utils.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -56,7 +57,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         adapter = new AGalleryPhoto(this);
 
         recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new SpacesItemDecoration(10));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(5));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         setSupportActionBar(toolbar);
@@ -69,7 +70,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         RequestParams params=new RequestParams();
         params.add("user_type", Globals.USER_TYPE+"");
         params.add("gallery_type", type+"");
-        client.post("http://step2code.com/pratyush/api/gallery", params, new JsonHttpResponseHandler() {
+        client.post(Utils.BASE_URL+"gallery", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);

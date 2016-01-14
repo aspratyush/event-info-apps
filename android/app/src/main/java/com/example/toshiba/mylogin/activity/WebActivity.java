@@ -82,7 +82,7 @@ public class WebActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             super.onPageFinished(view, url);
 
-           // progressBar.setVisibility(View.GONE);
+
             dialog.dismiss();
         }
     }

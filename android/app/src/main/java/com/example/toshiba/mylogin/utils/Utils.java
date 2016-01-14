@@ -18,6 +18,8 @@ import com.example.toshiba.mylogin.activity.MainActivity;
  */
 public class Utils {
 
+    public static final String BASE_URL="http://confluenceoftech.in/api/";
+
     public static void sendNotfication(Context context,String title,String msg){
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

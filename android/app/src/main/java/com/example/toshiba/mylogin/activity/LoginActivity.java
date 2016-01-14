@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.model.MGallery;
 import com.example.toshiba.mylogin.utils.Globals;
+import com.example.toshiba.mylogin.utils.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 /**
- * Created by TOSHIBA on 12/17/2015.
+ * Created by Jewel on 12/17/2015.
  */
 public class LoginActivity extends AppCompatActivity {
     private EditText edtUser,edtPass;
@@ -54,8 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add("username", edtUser.getText().toString().trim());
-               // params.add("password", edtPass.getText().toString().trim());
-                client.post("http://step2code.com/pratyush/api/login", params, new JsonHttpResponseHandler() {
+
+                client.post(Utils.BASE_URL+"login", params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);

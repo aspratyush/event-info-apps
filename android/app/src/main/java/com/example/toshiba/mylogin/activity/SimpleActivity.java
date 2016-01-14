@@ -36,7 +36,7 @@ public class SimpleActivity extends AppCompatActivity {
 
     private void prepareDis(){
         Picasso.with(this)
-                .load("http://step2code.com/pratyush/uploads/image/large/"+gallery.getSrc())
+                .load("http://confluenceoftech.in/uploads/image/large/"+gallery.getSrc())
                 .placeholder(R.drawable.loading)
                 .into(imgPhoto);
     }

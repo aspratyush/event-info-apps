@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter adapter;
     private FloatingActionButton btnFloating;
     private NavigationView navigationView;
-    private String upLoadServerUri = "http://step2code.com/pratyush/api/uploadImage";
+    private String upLoadServerUri = Utils.BASE_URL+"uploadImage";
 
     private BroadcastReceiver updateReceiver;
 
@@ -101,6 +102,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public String getDeviceId()
+    {
+        String deviceId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+       return deviceId;
+
+    }
+
     private void sendRegistrationToServer(String token) {
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -108,8 +116,9 @@ public class MainActivity extends AppCompatActivity {
 
         params.add("gcm_id", token);
         params.add("user_id", Globals.USER_ID + "");
+        params.add("device_id", getDeviceId());
 
-        client.post("http://step2code.com/pratyush-gcm/api/register", params, new JsonHttpResponseHandler() {
+        client.post(Utils.BASE_URL+"register", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -186,11 +195,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == RESULT_LOAD_IMG && data != null) {
-            //Uri uri = data.getData();
-            //TextView statusText = (TextView) findViewById(R.id.messageText);
-            //statusText.setText("Uploading.. " + uri);
-
-
 
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -207,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
             Bitmap scaledImage = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(filePath), 1024, 768, true);
 
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            scaledImage.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            scaledImage.compress(Bitmap.CompressFormat.PNG, 100, bos);
             byte[] bitmapdata = bos.toByteArray();
             File f = new File(getCacheDir(), Globals.USER_ID + "_" + System.currentTimeMillis() + ".png");
 
