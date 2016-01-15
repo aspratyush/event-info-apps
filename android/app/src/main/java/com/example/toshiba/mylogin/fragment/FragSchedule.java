@@ -56,49 +56,6 @@ public class FragSchedule extends Fragment {
 
     }
 
-    private void getOnlineData() {
-
-        dialog = ProgressDialog.show(getActivity(), "", "Loading...", true);
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.add("key", "value");
-        client.post("http://step2code.com/pratyush/api/schedule_list", params, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                //jsonParser(response);
-                dialog.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                dialog.dismiss();
-            }
-        });
-    }
-
-   /* private void jsonParser(JSONArray jsonArray) {
-        schedules = new ArrayList<MSchedule>();
-        MSchedule schedule;
-        for (int i = 0; i < jsonArray.length(); i++) {
-            try {
-                JSONObject jObj = jsonArray.getJSONObject(i);
-                String date = jObj.getString("date");
-                String img = jObj.getString("img");
-                String venue = jObj.getString("venue");
-                schedule = new MSchedule();
-                schedule.setDate(date);
-                schedule.setImage(img);
-                schedule.setVenue(venue);
-                schedules.add(schedule);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        adapter.setData(schedules);
-    }*/
 
 
     private void prepareList() {
@@ -440,6 +397,29 @@ public class FragSchedule extends Fragment {
             schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
             schedules.add(schedule);
 
+        }else if(Globals.USER_ID==13){
+            MSchedule schedule = new MSchedule();
+            schedule.setImg_id(R.drawable.sha_25);
+            schedule.setDate("24/01/2016");
+            schedule.setDesc("Weddings are unique in a way. \n" +
+                    "Please laugh & people cry. \n" +
+                    "Some people celebrate a new member entering \n" +
+                    "their family while some cry letting \n" +
+                    "go of their beloved daughters. \n" +
+                    "\n" +
+                    "Its brilliant how all these elements get together \n" +
+                    "and create a beautiful expression of love & harmony. \n" +
+                    "We would love to have you when we try to create \n" +
+                    "our own little story which shall last us a lifetime.... \n" +
+                    "\n" +
+                    "Jaan Prasthan\t:\n" +
+                    "Hasthmelap\t:\n" +
+                    "Lunch\t\t:\n");
+            schedule.setDress_code("");
+            schedule.setTime("");
+            schedule.setVenue("");
+            schedule.setLocation("geo:0,0?q=bangabandhu+stadium+dhaka");
+            schedules.add(schedule);
         }
 
         adapter = new ASchedule(getActivity());

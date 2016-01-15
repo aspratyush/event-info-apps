@@ -18,6 +18,7 @@ import com.example.toshiba.mylogin.activity.WebActivity;
 import com.example.toshiba.mylogin.model.MSchedule;
 import com.example.toshiba.mylogin.utils.Globals;
 import com.example.toshiba.mylogin.utils.LoadingDialog;
+import com.example.toshiba.mylogin.utils.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -71,7 +72,7 @@ public class FragAboutUs extends Fragment implements View.OnClickListener {
         AsyncHttpClient client=new AsyncHttpClient();
         RequestParams params=new RequestParams();
         params.add("key", "value");
-        client.post("http://step2code.com/pratyush/api/about", params, new JsonHttpResponseHandler() {
+        client.post(Utils.BASE_URL+"about", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
