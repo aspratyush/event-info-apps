@@ -207,61 +207,99 @@ public class MainActivity extends AppCompatActivity {
             final String filePath = cursor.getString(columnIndex);
 
             cursor.close();
-            // Convert file path into bitmap image using below line.
-            Bitmap scaledImage = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(filePath), 1024, 768, true);
 
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            scaledImage.compress(Bitmap.CompressFormat.PNG, 100, bos);
-            byte[] bitmapdata = bos.toByteArray();
-            File f = new File(getCacheDir(), Globals.USER_ID + "_" +getDeviceId()+"_"+ System.currentTimeMillis() + ".png");
-
-            //write the bytes in file
-            FileOutputStream fos = null;
-            try {
-
-                f.createNewFile();
-                fos = new FileOutputStream(f);
-                fos.write(bitmapdata);
-                fos.flush();
-                fos.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            Bitmap scaledImage = null;
+            File imageFile = new File(filePath);
+            ExifInterface exif = null;
+            try{
+                exif = new ExifInterface(imageFile.getAbsolutePath());
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.d("ASP", "Error in ExifInterface...");
             }
 
-            AsyncHttpClient client = new AsyncHttpClient();
-            RequestParams params = new RequestParams();
-            Utils.sendNotfication(this, "Info", "Uploading...");
+            if ( exif != null ) {
+                //obtain orientation
+                int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
 
-            params.put("user_id", Globals.USER_ID + "");
-            params.put("gallery_type", 1 + "");
-            try {
-                params.put("test", f);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                switch (orientation) {
+                    case ExifInterface.ORIENTATION_ROTATE_180:
+                    case ExifInterface.ORIENTATION_NORMAL:
+                        Log.d("ASP", "Potrait...");
+                        scaledImage = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(filePath), 720, 1280, true);
+                        break;
+                    case ExifInterface.ORIENTATION_ROTATE_270:
+                    case ExifInterface.ORIENTATION_ROTATE_90:
+                    default:
+                        Log.d("ASP", "Landscape...");
+                        scaledImage = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(filePath), 1280, 720, true);
+                        break;
+
+                }
+            }
+            else{
+                Log.d("ASP", "Exif data is NULL...");
+                Toast.makeText(MainActivity.this, "Unsupported image...", Toast.LENGTH_SHORT).show();
             }
 
-            client.post(upLoadServerUri, params, new JsonHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    super.onSuccess(statusCode, headers, response);
-                    try {
-                        String status = response.getString("status");
-                        Utils.sendNotfication(MainActivity.this, "Info", "Uploaded succeed");
+            if ( scaledImage != null ) {
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                scaledImage.compress(Bitmap.CompressFormat.JPEG, 85, bos);
+                byte[] bitmapdata = bos.toByteArray();
+                File f = new File(getCacheDir(), Globals.USER_ID + "_" + getDeviceId() + "_" + System.currentTimeMillis() + ".jpg");
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                //write the bytes in file
+                FileOutputStream fos = null;
+                try {
+
+                    f.createNewFile();
+                    fos = new FileOutputStream(f);
+                    fos.write(bitmapdata);
+                    fos.flush();
+                    fos.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                AsyncHttpClient client = new AsyncHttpClient();
+                RequestParams params = new RequestParams();
+                Toast.makeText(MainActivity.this, "Uploading.. status in Notification Bar", Toast.LENGTH_SHORT).show();
+                Utils.sendNotfication(this, "Info", "Uploading...");
+
+                params.put("user_id", Globals.USER_ID + "");
+                params.put("gallery_type", 1 + "");
+                try {
+                    params.put("test", f);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                client.post(upLoadServerUri, params, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+                        try {
+                            String status = response.getString("status");
+                            Utils.sendNotfication(MainActivity.this, "Info", "Uploaded succeed");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                    super.onFailure(statusCode, headers, responseString, throwable);
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
 
-                    Utils.sendNotfication(MainActivity.this, "Info", "Uploaded failed");
-                }
-            });
+                        Utils.sendNotfication(MainActivity.this, "Info", "Uploaded failed");
+                    }
+                });
+            }
+            else{
+                Log.d("ASP", "Scaled data is NULL...");
+                Toast.makeText(MainActivity.this, "Unsupported image...", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
