@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             scaledImage.compress(Bitmap.CompressFormat.PNG, 100, bos);
             byte[] bitmapdata = bos.toByteArray();
-            File f = new File(getCacheDir(), Globals.USER_ID + "_" + System.currentTimeMillis() + ".png");
+            File f = new File(getCacheDir(), Globals.USER_ID + "_" +getDeviceId()+"_"+ System.currentTimeMillis() + ".png");
 
             //write the bytes in file
             FileOutputStream fos = null;
