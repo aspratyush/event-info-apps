@@ -31,7 +31,7 @@ public class MyGcmListenerService extends GcmListenerService {
     }
 
     private void sendNotification(Bundle data) {
-        String message=data.getString("message");
+        String message=data.getString("msg_body");
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Intent intent=new Intent(this,MainActivity.class);
@@ -51,7 +51,7 @@ public class MyGcmListenerService extends GcmListenerService {
     }
 
     private void updateUI(Bundle data) {
-        String message = data.getString("message");
+        String message = data.getString("msg_body");
         Intent newMessage = new Intent("gcm intent");
         newMessage.putExtra("message",message);
 

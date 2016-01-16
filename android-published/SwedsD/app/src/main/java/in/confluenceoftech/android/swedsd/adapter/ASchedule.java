@@ -12,6 +12,7 @@ import android.widget.TextView;
 import in.confluenceoftech.android.swedsd.R;
 import in.confluenceoftech.android.swedsd.activity.ScheduleActivity;
 import in.confluenceoftech.android.swedsd.model.MSchedule;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

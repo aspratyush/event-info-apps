@@ -39,12 +39,16 @@ public class FragGallery extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case in.confluenceoftech.android.swedsd.R.id.imgPhoto:
+                //(15Jan)
                 PhotoGalleryActivity.type=1;
                 getActivity().startActivity(new Intent(getActivity(), PhotoGalleryActivity.class));
+                //Toast.makeText( getActivity(), "Upload servers preparing to be back in action...", Toast.LENGTH_SHORT).show();
                 break;
             case in.confluenceoftech.android.swedsd.R.id.imgVideo:
-                PhotoGalleryActivity.type=2;
-                getActivity().startActivity(new Intent(getActivity(), PhotoGalleryActivity.class));
+//              //15th Jan
+//                PhotoGalleryActivity.type=2;
+//                getActivity().startActivity(new Intent(getActivity(), PhotoGalleryActivity.class));
+                Toast.makeText( getActivity(), "Video upload server has caught a chill... will be back soon", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -4,7 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.ExifInterface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -20,6 +27,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import in.confluenceoftech.android.swedsd.GCM.RegistrationIntentService;
@@ -27,18 +36,27 @@ import in.confluenceoftech.android.swedsd.fragment.FragAboutUs;
 import in.confluenceoftech.android.swedsd.fragment.FragGallery;
 import in.confluenceoftech.android.swedsd.fragment.FragSchedule;
 import in.confluenceoftech.android.swedsd.utils.Globals;
+import in.confluenceoftech.android.swedsd.utils.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int RESULT_LOAD_IMG = 100;
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private ViewPager viewPager;
@@ -46,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter adapter;
     private FloatingActionButton btnFloating;
     private NavigationView navigationView;
+    private String upLoadServerUri = Utils.BASE_URL+"uploadImage";
 
     private BroadcastReceiver updateReceiver;
 
@@ -62,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         updateReceiver=new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                //tvStatus.setText(intent.getStringExtra("message"));
-                //Toast.makeText(context,"Success in Receive",Toast.LENGTH_LONG).show();
+
                 String token=intent.getStringExtra("token");
                 sendRegistrationToServer(token);
 
@@ -85,15 +103,23 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public String getDeviceId()
+    {
+        String deviceId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+       return deviceId;
+
+    }
+
     private void sendRegistrationToServer(String token) {
-        Log.d("Jewel","call to"+token);
+
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        //params.add("id",s);
-        params.add("regId", token);
-        params.add("name", "");
-        params.add("email", "");
-        client.post("http://step2code.com/gcm/api/register", params, new JsonHttpResponseHandler() {
+
+        params.add("gcm_id", token);
+        params.add("user_id", Globals.USER_ID + "");
+        params.add("device_id", getDeviceId());
+
+        client.post(Utils.BASE_URL+"register", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -121,11 +147,10 @@ public class MainActivity extends AppCompatActivity {
         btnFloating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "Upload testing", Toast.LENGTH_SHORT).show();
-                /*Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image*//*");
-                startActivityForResult(intent,10);*/
-                startActivity(new Intent(MainActivity.this,UploadActivity.class));
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                //(15Jan)
+                startActivityForResult(intent, RESULT_LOAD_IMG);
+		        //Toast.makeText(MainActivity.this, "Upload servers preparing to be back in action...", Toast.LENGTH_SHORT).show();
             }
         });
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -169,19 +194,124 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == RESULT_LOAD_IMG && data != null) {
+
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            //get filename
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            final String filePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            Bitmap scaledImage = null;
+            File imageFile = new File(filePath);
+            File f = null;
+
+            //get image orientation
+            InputStream is = null;
+            try {
+                is = getContentResolver().openInputStream(selectedImage);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            BitmapFactory.Options dbo = new BitmapFactory.Options();
+            dbo.inJustDecodeBounds = true;
+            BitmapFactory.decodeStream(is, null, dbo);
+            try{
+                is.close();
+            }catch (IOException exception){
+                exception.printStackTrace();
+            }
+            if ( dbo.outHeight > dbo.outWidth ){
+                //PORTRAIT
+                Log.d("ASP", "Portrait...");
+                scaledImage = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(filePath), 720, 1280, true);
+                f = new File(getCacheDir(), Globals.USER_ID + "_" + getDeviceId() + "_" + System.currentTimeMillis() + "_PORT.jpg");
+            }
+            else{
+                //LANDSCAPE
+                Log.d("ASP", "Landscape...");
+                scaledImage = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(filePath), 1280, 720, true);
+                f = new File(getCacheDir(), Globals.USER_ID + "_" + getDeviceId() + "_" + System.currentTimeMillis() + "_LAND.jpg");
+            }
+
+            if ( scaledImage != null ) {
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                scaledImage.compress(Bitmap.CompressFormat.JPEG, 85, bos);
+                byte[] bitmapdata = bos.toByteArray();
+
+                //write the bytes in file
+                FileOutputStream fos = null;
+                try {
+
+                    f.createNewFile();
+                    fos = new FileOutputStream(f);
+                    fos.write(bitmapdata);
+                    fos.flush();
+                    fos.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                AsyncHttpClient client = new AsyncHttpClient();
+                RequestParams params = new RequestParams();
+                Toast.makeText(MainActivity.this, "Uploading.. status in Notification Bar", Toast.LENGTH_SHORT).show();
+                Utils.sendNotfication(this, "Info", "Uploading...");
+
+                params.put("user_id", Globals.USER_ID + "");
+                params.put("gallery_type", 1 + "");
+                try {
+                    params.put("test", f);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                client.post(upLoadServerUri, params, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+                        try {
+                            String status = response.getString("status");
+                            Utils.sendNotfication(MainActivity.this, "Info", "Uploaded succeed");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                        super.onFailure(statusCode, headers, responseString, throwable);
+
+                        Utils.sendNotfication(MainActivity.this, "Info", "Uploaded failed");
+                    }
+                });
+            }
+            else{
+                Log.d("ASP", "Scaled data is NULL...");
+                Toast.makeText(MainActivity.this, "Unsupported image...", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
+    @Override
     protected void onResume() {
-        super.onResume();
+            super.onResume();
         LocalBroadcastManager.getInstance(this).registerReceiver(updateReceiver, new IntentFilter("gcm intent"));
     }
     @Override
     protected void onPause() {
-        super.onPause();
+            super.onPause();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(updateReceiver);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
     }
 
     private void prepareToolbar() {
@@ -233,11 +363,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(in.confluenceoftech.android.swedsd.R.id.mainContent, fragment).commit();
 
-    }
 
     class MyAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<Fragment>();

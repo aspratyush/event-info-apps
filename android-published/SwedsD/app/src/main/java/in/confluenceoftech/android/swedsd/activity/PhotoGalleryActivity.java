@@ -10,8 +10,10 @@ import android.view.MenuItem;
 import in.confluenceoftech.android.swedsd.R;
 import in.confluenceoftech.android.swedsd.adapter.AGalleryPhoto;
 import in.confluenceoftech.android.swedsd.model.MGallery;
+import in.confluenceoftech.android.swedsd.model.MSchedule;
 import in.confluenceoftech.android.swedsd.utils.Globals;
 import in.confluenceoftech.android.swedsd.utils.SpacesItemDecoration;
+import in.confluenceoftech.android.swedsd.utils.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -43,7 +45,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         setContentView(R.layout.lay_photos);
 
         init();
-       getOnlineData();
+        getOnlineData();
     }
 
 
@@ -55,7 +57,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         adapter = new AGalleryPhoto(this);
 
         recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new SpacesItemDecoration(10));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(5));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         setSupportActionBar(toolbar);
@@ -68,7 +70,7 @@ public class PhotoGalleryActivity extends AppCompatActivity {
         RequestParams params=new RequestParams();
         params.add("user_type", Globals.USER_TYPE+"");
         params.add("gallery_type", type+"");
-        client.post("http://step2code.com/pratyush/api/gallery", params, new JsonHttpResponseHandler() {
+        client.post(Utils.BASE_URL+"gallery", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
