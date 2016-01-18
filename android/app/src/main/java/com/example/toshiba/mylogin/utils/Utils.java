@@ -24,8 +24,8 @@ import java.net.URL;
  */
 public class Utils {
 
-    //public static final String BASE_URL="http://confluenceoftech.in/api/";
-    public static final String BASE_URL="http://step2code.com/pratyush/api/";
+   public static final String BASE_URL="http://confluenceoftech.in/api/";
+   // public static final String BASE_URL="http://step2code.com/pratyush/api/";
 
     public static void sendNotfication(Context context,String title,String msg){
 

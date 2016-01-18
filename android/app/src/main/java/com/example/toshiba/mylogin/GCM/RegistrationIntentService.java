@@ -24,10 +24,9 @@ public class RegistrationIntentService extends IntentService {
     private static final String TAG = "registration";
 
     //pratyush GCM id
-    //private static final String GCM_ID="503718163383";
+    private static final String GCM_ID="503718163383";
 
-    // Jewel GCM id
-    private static final String GCM_ID="208667823831";
+
 
 
     public RegistrationIntentService() {
