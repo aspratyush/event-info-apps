@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,12 +14,17 @@ import android.widget.Toast;
 
 import in.confluenceoftech.android.swedsd.R;
 import in.confluenceoftech.android.swedsd.utils.Globals;
+import in.confluenceoftech.android.swedsd.model.MGallery;
+import in.confluenceoftech.android.swedsd.utils.Utils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -48,9 +54,29 @@ public class LoginActivity extends AppCompatActivity {
                 final ProgressDialog dialog=ProgressDialog.show(LoginActivity.this,"","Login...");
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
-                params.add("username", edtUser.getText().toString().trim());
-               // params.add("password", edtPass.getText().toString().trim());
-                client.post("http://step2code.com/pratyush/api/login", params, new JsonHttpResponseHandler() {
+
+                //check edtUser
+                String szUserName = edtUser.getText().toString();
+                if ( szUserName.compareTo("mandhyan13") == 0 ){
+                    szUserName = "mandhyan_132134";
+                }
+                else if ( szUserName.compareTo("mandhyan21") == 0 ){
+                    szUserName = "mandhyan_213455";
+                }
+                else if ( szUserName.compareTo("mandhyan34") == 0 ){
+                    szUserName = "mandhyan_345589";
+                }
+                else if ( szUserName.compareTo("shah13") == 0 ){
+                    szUserName = "shah_132134";
+                }
+                else if ( szUserName.compareTo("shah21") == 0 ){
+                    szUserName = "shah_213455";
+                }
+                else if ( szUserName.compareTo("shah34") == 0 ){
+                    szUserName = "shah_345589";
+                }
+                params.add("username", szUserName.trim());
+                client.post(Utils.BASE_URL+"login", params, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);

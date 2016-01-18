@@ -51,7 +51,7 @@ public class AGalleryPhoto extends RecyclerView.Adapter<AGalleryPhoto.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         MGallery schedule = galleries.get(position);
         Picasso.with(context)
-                .load("http://step2code.com/pratyush/uploads/"+schedule.getSrc())
+                .load("http://confluenceoftech.in/uploads/image/small/"+schedule.getSrc())
                 .placeholder(R.drawable.loading)
                 .into(holder.imgPhoto);
 
@@ -77,8 +77,8 @@ public class AGalleryPhoto extends RecyclerView.Adapter<AGalleryPhoto.MyViewHold
             Display display = wm.getDefaultDisplay();
 
             ViewGroup.LayoutParams params=imgPhoto.getLayoutParams();
-            params.width=(display.getWidth()-40)/3;
-            params.height=(display.getWidth()-40)/3;
+            params.width=(display.getWidth()-20)/3;
+            params.height=(display.getWidth()-20)/3;
             imgPhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -8,8 +8,8 @@ android {
         applicationId "in.confluenceoftech.android.swedsd"
         minSdkVersion 13
         targetSdkVersion 23
-        versionCode 6
-        versionName "1.4.2"
+        versionCode 10
+        versionName "1.6.1"
     }
     buildTypes {
         release {

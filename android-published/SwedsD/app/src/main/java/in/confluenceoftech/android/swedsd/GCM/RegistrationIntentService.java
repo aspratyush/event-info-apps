@@ -22,6 +22,7 @@ import cz.msebera.android.httpclient.Header;
 public class RegistrationIntentService extends IntentService {
 
     private static final String TAG = "registration";
+    private static final String GCM_ID="503718163383";
 
 
     public RegistrationIntentService() {
@@ -33,7 +34,7 @@ public class RegistrationIntentService extends IntentService {
 
         try {
             InstanceID instanceID = InstanceID.getInstance(this);
-            String token = instanceID.getToken("208667823831", GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+            String token = instanceID.getToken(GCM_ID, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
 
 
             if(token!=null)
