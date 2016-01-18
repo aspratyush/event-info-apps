@@ -12,6 +12,7 @@ import android.support.v7.app.NotificationCompat;
 
 import com.example.toshiba.mylogin.R;
 import com.example.toshiba.mylogin.activity.MainActivity;
+import com.example.toshiba.mylogin.utils.Utils;
 import com.google.android.gms.gcm.GcmListenerService;
 
 /**
@@ -22,33 +23,20 @@ public class MyGcmListenerService extends GcmListenerService {
     public void onMessageReceived(String from, Bundle data) {
         super.onMessageReceived(from, data);
 
+        String message=data.getString("msg_body");
+        String img=data.getString("msg_img");
+        if(img.isEmpty()){
+            Utils.sendNotfication(this,"Info",message);
+        }else{
+            Utils.sendNotfication(this,"Info",message,img);
+        }
 
-        //send notification
-        sendNotification(data);
 
         //update UI
         updateUI(data);
     }
 
-    private void sendNotification(Bundle data) {
-        String message=data.getString("msg_body");
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        Intent intent=new Intent(this,MainActivity.class);
-        PendingIntent pintent=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
-        Notification notification=new NotificationCompat.Builder(this)
-                .setContentTitle("GCM Test")
-                .setContentText(message)
-                .setContentIntent(pintent)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                .setSmallIcon(R.drawable.a)
-                .build();
-
-        NotificationManager notificationMana= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationMana.notify(0,notification);
-
-    }
 
     private void updateUI(Bundle data) {
         String message = data.getString("msg_body");
