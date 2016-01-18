@@ -25,7 +25,7 @@ import java.net.URL;
 public class Utils {
 
    public static final String BASE_URL="http://confluenceoftech.in/api/";
-   // public static final String BASE_URL="http://step2code.com/pratyush/api/";
+    //public static final String BASE_URL="http://step2code.com/pratyush/api/";
 
     public static void sendNotfication(Context context,String title,String msg){
 
@@ -39,6 +39,7 @@ public class Utils {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setSmallIcon(R.drawable.a)
+
                 .build();
 
         NotificationManager notificationMana= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -48,12 +49,16 @@ public class Utils {
     public static void sendNotfication(Context context,String title,String msg,String imgUrl){
 
         Bitmap img=null;
+        // Create the style object with BigPictureStyle subclass.
+        NotificationCompat.BigPictureStyle notiStyle = new NotificationCompat.BigPictureStyle();
+        notiStyle.setBigContentTitle("Big Picture Expanded");
+        notiStyle.setSummaryText("Nice big picture.");
         try{
             img= BitmapFactory.decodeStream((InputStream) new URL(imgUrl).getContent());
         }catch (IOException e){
 
         }
-
+        notiStyle.bigPicture(img);
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Intent intent=new Intent(context,MainActivity.class);
         PendingIntent pintent=PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_ONE_SHOT);
@@ -64,7 +69,7 @@ public class Utils {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setSmallIcon(R.drawable.a)
-                .setLargeIcon(img)
+                .setStyle(notiStyle)
                 .build();
 
         NotificationManager notificationMana= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
